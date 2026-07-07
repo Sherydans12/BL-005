@@ -289,6 +289,8 @@
 }
 
 .theme-kineactiva .professional-photo {
+  position: relative;
+  overflow: hidden;
   min-height: clamp(25rem, 44vw, 34rem);
   padding: 1rem;
   border-radius: 8px;
@@ -525,4 +527,28 @@
   .theme-kineactiva .professional-photo {
     min-height: 24rem;
   }
+}
+
+.theme-kineactiva .kine-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.theme-kineactiva .kine-asset-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.theme-kineactiva .kine-asset-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
