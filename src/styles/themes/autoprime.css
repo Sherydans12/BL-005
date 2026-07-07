@@ -105,6 +105,7 @@
   display: grid;
   align-content: end;
   gap: 1.35rem;
+  min-width: 0;
   min-height: 40rem;
   padding: clamp(1.4rem, 4.5vw, 3.2rem);
   background:
@@ -117,6 +118,7 @@
 
 .ap-hero__copy h1 {
   max-width: 11ch;
+  font-size: clamp(2.7rem, 4.35vw, 4rem);
 }
 
 .ap-hero__visual {
@@ -574,6 +576,10 @@
 }
 
 @media (max-width: 700px) {
+  .ap-hero__copy h1 {
+    font-size: clamp(2.35rem, 11vw, 2.95rem);
+  }
+
   .ap-hero {
     padding-top: 2rem;
   }

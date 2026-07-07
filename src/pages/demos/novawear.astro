@@ -20,7 +20,7 @@ const categories = [
     title: 'Zapatillas',
     label: 'Street runners',
     asset: 'producto-zapatillas.webp',
-    description: 'Modelos de rotacion rapida para completar el outfit sin vueltas.',
+    description: 'Modelos de rotación rápida para completar el outfit sin vueltas.',
   },
   {
     title: 'Accesorios',
@@ -73,11 +73,11 @@ const steps = [
 >
   <section class="nw-hero">
     <div class="nw-hero__copy">
-      <div class="section-kicker">Nueva temporada · Drops limitados · Envio a Chile</div>
+      <div class="section-kicker">Nueva temporada · Drops limitados · Envío a Chile</div>
       <h1>Streetwear listo para vender por WhatsApp</h1>
       <p>
         Una vitrina editorial para marcas que lanzan ropa, zapatillas y accesorios por Instagram,
-        pero necesitan un catalogo web mas claro, moderno y confiable.
+        pero necesitan un catálogo web más claro, moderno y confiable.
       </p>
       <div class="hero-actions">
         <a class="button" href={stockHref} target="_blank" rel="noreferrer">Consultar stock</a>
@@ -88,7 +88,7 @@ const steps = [
     <div
       class="nw-hero__visual nw-image"
       style={`--asset: url('/assets/demos/novawear/hero-editorial-streetwear.webp')`}
-      aria-label="Campana editorial urbana de NovaWear"
+      aria-label="Campaña editorial urbana de NovaWear"
     >
       <span class="nw-image__label">Reemplazar: hero-editorial-streetwear.webp</span>
       <div class="nw-hero__drop">
@@ -101,12 +101,12 @@ const steps = [
   <section class="section nw-categories" id="servicios" aria-labelledby="categories-title">
     <div class="nw-section-head">
       <div>
-        <div class="section-kicker">Categorias visuales</div>
-        <h2 id="categories-title">La coleccion se entiende antes de preguntar</h2>
+        <div class="section-kicker">Categorías visuales</div>
+        <h2 id="categories-title">La colección se entiende antes de preguntar</h2>
       </div>
       <p>
-        Bloques grandes, directos y reemplazables por fotos reales para que cada categoria tenga
-        intencion comercial.
+        Bloques grandes, directos y reemplazables por fotos reales para que cada categoría tenga
+        intención comercial.
       </p>
     </div>
 
@@ -135,7 +135,7 @@ const steps = [
     <div class="nw-section-head">
       <div>
         <div class="section-kicker">Productos destacados</div>
-        <h2 id="products-title">Catalogo corto, precio claro y consulta rapida</h2>
+        <h2 id="products-title">Catálogo corto, precio claro y consulta rápida</h2>
       </div>
       <a class="nw-text-link" href={stockHref} target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
     </div>
@@ -169,10 +169,10 @@ const steps = [
   <section class="nw-drop" aria-labelledby="drop-title">
     <div>
       <div class="section-kicker">Drop urbano</div>
-      <h2 id="drop-title">Edicion limitada, movimiento rapido</h2>
+      <h2 id="drop-title">Edición limitada, movimiento rápido</h2>
       <p>
         Activa urgencia sin carrito: muestra el drop, resuelve tallas por WhatsApp y coordina compra
-        con atencion directa.
+        con atención directa.
       </p>
     </div>
     <a class="button" href={stockHref} target="_blank" rel="noreferrer">Pedir disponibilidad</a>
@@ -182,7 +182,7 @@ const steps = [
     <div class="nw-section-head">
       <div>
         <div class="section-kicker">Lookbook</div>
-        <h2 id="lookbook-title">Inspiracion para comprar el look completo</h2>
+        <h2 id="lookbook-title">Inspiración para comprar el look completo</h2>
       </div>
       <p>Combinaciones simples para vender por outfit, no solo por producto suelto.</p>
     </div>
@@ -207,8 +207,8 @@ const steps = [
 
   <section class="section nw-process" aria-labelledby="process-title">
     <div>
-      <div class="section-kicker">Como comprar</div>
-      <h2 id="process-title">Del catalogo al pedido en cuatro pasos</h2>
+      <div class="section-kicker">Cómo comprar</div>
+      <h2 id="process-title">Del catálogo al pedido en cuatro pasos</h2>
     </div>
     <ol>
       {steps.map((step, index) => <li><span>{String(index + 1).padStart(2, '0')}</span>{step}</li>)}
@@ -226,29 +226,29 @@ const steps = [
     </div>
     <div class="nw-trust__item">
       <strong>Pago seguro</strong>
-      <p>Transferencia o medio acordado antes del envio, sin checkout ficticio.</p>
+      <p>Transferencia o medio acordado antes del envío, sin checkout ficticio.</p>
     </div>
     <div class="nw-trust__item">
-      <strong>Atencion por WhatsApp</strong>
+      <strong>Atención por WhatsApp</strong>
       <p>Consulta directa para tallas, medidas, colores y fecha de retiro.</p>
     </div>
   </section>
 
   <section class="section nw-testimonials" aria-labelledby="reviews-title">
     <div class="section-kicker">Opiniones</div>
-    <h2 id="reviews-title">Clientes que compran cuando el catalogo esta claro</h2>
+    <h2 id="reviews-title">Clientes que compran cuando el catálogo está claro</h2>
     <div class="nw-review-grid">
       <figure>
-        <blockquote>"Pregunte por talla y me mandaron medidas altiro. La chaqueta llego tal cual la foto."</blockquote>
+        <blockquote>"Pregunté por talla y me mandaron medidas altiro. La chaqueta llegó tal cual la foto."</blockquote>
         <figcaption>Vale P. · Santiago</figcaption>
       </figure>
       <figure>
-        <blockquote>"Me gusto poder ver los outfits completos antes de pedir. Termine sumando bolso y jockey."</blockquote>
-        <figcaption>Martin R. · Concepcion</figcaption>
+        <blockquote>"Me gustó poder ver los outfits completos antes de pedir. Terminé sumando bolso y jockey."</blockquote>
+        <figcaption>Martín R. · Concepción</figcaption>
       </figure>
       <figure>
-        <blockquote>"Se nota mas marca que solo vender por historias. Todo se ve ordenado y facil de consultar."</blockquote>
-        <figcaption>Josefa M. · Valparaiso</figcaption>
+        <blockquote>"Se nota más marca que solo vender por historias. Todo se ve ordenado y fácil de consultar."</blockquote>
+        <figcaption>Josefa M. · Valparaíso</figcaption>
       </figure>
     </div>
   </section>
@@ -256,9 +256,9 @@ const steps = [
   <FAQ
     items={[
       { question: '¿Tienen stock inmediato?', answer: 'Depende del producto, talla y color. La idea es consultar por WhatsApp para confirmar disponibilidad antes de pagar.' },
-      { question: '¿Hacen envios?', answer: 'Si, la demo contempla envios a Chile coordinados por WhatsApp segun comuna, region y fecha de despacho.' },
-      { question: '¿Puedo cambiar talla?', answer: 'Se puede informar una politica de cambios por talla, estado del producto y plazo definido por la tienda.' },
-      { question: '¿Como consulto por un producto?', answer: 'Cada producto tiene un enlace Consultar que abre WhatsApp con el nombre del item para pedir stock o medidas.' },
+      { question: '¿Hacen envíos?', answer: 'Sí, la demo contempla envíos a Chile coordinados por WhatsApp según comuna, región y fecha de despacho.' },
+      { question: '¿Puedo cambiar talla?', answer: 'Se puede informar una política de cambios por talla, estado del producto y plazo definido por la tienda.' },
+      { question: '¿Cómo consulto por un producto?', answer: 'Cada producto tiene un enlace Consultar que abre WhatsApp con el nombre del ítem para pedir stock o medidas.' },
       { question: '¿Tienen retiro presencial?', answer: 'Puede existir retiro en punto acordado si la tienda lo ofrece. Esta demo deja el flujo preparado para confirmarlo por mensaje.' },
     ]}
   />
@@ -266,10 +266,10 @@ const steps = [
   <section class="nw-final-cta" id="contacto">
     <div>
       <div class="section-kicker">NovaWear online</div>
-      <h2>Encuentra tu proximo outfit</h2>
+      <h2>Encuentra tu próximo outfit</h2>
       <p>
-        Consulta tallas, stock y colores disponibles. Esta demo muestra como una tienda de redes
-        puede verse mas profesional sin convertir la compra en un ecommerce complejo.
+        Consulta tallas, stock y colores disponibles. Esta demo muestra cómo una tienda de redes
+        puede verse más profesional sin convertir la compra en un ecommerce complejo.
       </p>
     </div>
     <a class="button" href={stockHref} target="_blank" rel="noreferrer">Consultar stock ahora</a>

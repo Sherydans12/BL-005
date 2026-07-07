@@ -78,12 +78,14 @@
   display: grid;
   align-content: end;
   gap: 1.4rem;
+  min-width: 0;
   min-height: 38rem;
   padding: 1rem 0 2rem;
 }
 
 .nw-hero__copy h1 {
   max-width: 10.5ch;
+  font-size: clamp(3.4rem, 5.8vw, 5.35rem);
 }
 
 .nw-hero__copy p {
@@ -533,6 +535,10 @@
 @media (max-width: 680px) {
   .theme-novawear {
     --button-shadow: 5px 5px 0 #b8ff1d;
+  }
+
+  .nw-hero__copy h1 {
+    font-size: clamp(3rem, 14vw, 3.65rem);
   }
 
   .nw-hero {

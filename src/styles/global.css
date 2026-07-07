@@ -60,6 +60,15 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 78%, white);
+  outline-offset: 3px;
+}
+
 img,
 svg {
   display: block;
@@ -86,6 +95,7 @@ h1 {
   font-weight: var(--display-weight, 750);
   line-height: 0.94;
   letter-spacing: 0;
+  overflow-wrap: break-word;
 }
 
 h2 {
@@ -244,6 +254,7 @@ main {
 .hero-copy {
   display: grid;
   gap: 1.4rem;
+  min-width: 0;
 }
 
 .hero-copy p {
