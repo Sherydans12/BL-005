@@ -1,0 +1,46 @@
+---
+type NavItem = {
+  label: string;
+  href: string;
+};
+
+type Props = {
+  businessName: string;
+  category: string;
+  navItems?: NavItem[];
+  ctaLabel?: string;
+  ctaHref?: string;
+};
+
+const {
+  businessName,
+  category,
+  navItems = [
+    { label: 'Servicios', href: '#servicios' },
+    { label: 'Galería', href: '#galeria' },
+    { label: 'Contacto', href: '#contacto' },
+  ],
+  ctaLabel = 'Agendar',
+  ctaHref = '#contacto',
+} = Astro.props;
+---
+
+<header class="demo-header">
+  <a class="demo-header__brand" href="/demos" aria-label="Volver al índice de demos">
+    <span class="demo-header__mark" aria-hidden="true">{businessName.slice(0, 1)}</span>
+    <span>
+      <strong>{businessName}</strong>
+      <small>{category}</small>
+    </span>
+  </a>
+
+  <nav class="demo-header__nav" aria-label={`Navegación de ${businessName}`}>
+    {
+      navItems.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))
+    }
+  </nav>
+
+  <a class="button button--small demo-header__cta" href={ctaHref}>{ctaLabel}</a>
+</header>

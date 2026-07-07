@@ -1,0 +1,77 @@
+---
+import ContactForm from '@components/ContactForm.astro';
+import FAQ from '@components/FAQ.astro';
+import GallerySection from '@components/GallerySection.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import TestimonialCard from '@components/TestimonialCard.astro';
+import DemoLayout from '@layouts/DemoLayout.astro';
+import { getDemoBySlug } from '@data/demos';
+import '@styles/themes/glow-studio.css';
+
+const demo = getDemoBySlug('glow-studio')!;
+---
+
+<DemoLayout
+  title={demo.seoTitle}
+  description={demo.seoDescription}
+  businessName={demo.name}
+  category={demo.category}
+  theme={demo.slug}
+  ctaLabel="Agendar hora"
+>
+  <!-- TODO Glow Studio: desarrollar servicios premium, agenda online simulada, equipo y tratamientos destacados. -->
+  <section class="demo-hero">
+    <div class="hero-copy">
+      <div class="section-kicker">Beauty bar · Barbería · Skin</div>
+      <h1>Tu próxima hora, con terminación premium</h1>
+      <p>
+        Cortes, perfilado, tratamientos faciales y servicios express para verse
+        impecable sin perder tiempo. Atención cuidada, agenda ordenada y detalles finos.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="#contacto">Agendar hora</a>
+        <a class="button button--ghost" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-panel" aria-label="Composición premium de Glow Studio"></div>
+  </section>
+
+  <section class="section" id="servicios">
+    <div class="section-kicker">Servicios signature</div>
+    <h2>Una experiencia pulida desde la llegada</h2>
+    <div class="service-grid">
+      <ServiceCard title="Corte y styling" meta="Barbería" description="Corte asesorado, lavado y terminación con productos profesionales." />
+      <ServiceCard title="Glow facial express" meta="Skin" description="Limpieza, hidratación y acabado luminoso para eventos o rutina mensual." />
+      <ServiceCard title="Perfilado premium" meta="Detalles" description="Cejas, barba y terminaciones para mantener una imagen consistente." />
+    </div>
+  </section>
+
+  <GallerySection
+    title="Detalles del estudio"
+    eyebrow="Look & feel"
+    items={[
+      { title: 'Cabina limpia', description: 'Espacios privados para tratamientos faciales.' },
+      { title: 'Terminación barber', description: 'Servicios pensados para agenda rápida.' },
+      { title: 'Ritual de producto', description: 'Recomendaciones simples para mantener resultados.' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="testimonial-grid">
+      <TestimonialCard quote="Me atendieron puntual y salí lista para una reunión. Muy fino todo." author="Camila V." detail="Tratamiento facial" />
+      <TestimonialCard quote="El corte quedó exacto a lo que pedí, con una asesoría súper clara." author="Matías A." detail="Barbería" />
+      <TestimonialCard quote="La experiencia se siente más boutique que peluquería tradicional." author="Josefina L." detail="Clienta mensual" />
+    </div>
+  </section>
+
+  <FAQ
+    items={[
+      { question: '¿La agenda está conectada a un sistema real?', answer: 'No todavía. Esta versión deja el flujo visual listo para conectar más adelante.' },
+      { question: '¿Se pueden destacar packs?', answer: 'Sí, en la próxima etapa se pueden crear packs mensuales, novias o eventos.' },
+    ]}
+  />
+
+  <section class="contact-section">
+    <ContactForm title="Agenda tu próxima hora" submitLabel="Solicitar hora" />
+  </section>
+</DemoLayout>

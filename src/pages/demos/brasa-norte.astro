@@ -1,0 +1,77 @@
+---
+import ContactForm from '@components/ContactForm.astro';
+import FAQ from '@components/FAQ.astro';
+import GallerySection from '@components/GallerySection.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import TestimonialCard from '@components/TestimonialCard.astro';
+import DemoLayout from '@layouts/DemoLayout.astro';
+import { getDemoBySlug } from '@data/demos';
+import '@styles/themes/brasa-norte.css';
+
+const demo = getDemoBySlug('brasa-norte')!;
+---
+
+<DemoLayout
+  title={demo.seoTitle}
+  description={demo.seoDescription}
+  businessName={demo.name}
+  category={demo.category}
+  theme={demo.slug}
+  ctaLabel="Reservar mesa"
+>
+  <!-- TODO Brasa Norte: desarrollar carta, fotos reales de platos, reservas y relato de cocina artesanal. -->
+  <section class="demo-hero">
+    <div class="hero-copy">
+      <div class="section-kicker">Café de barrio · Cocina a fuego lento</div>
+      <h1>Sabores del norte, pausa de todos los días</h1>
+      <p>
+        Desayunos, almuerzos y café de especialidad en un espacio cálido para
+        venir sin apuro. Reserva tu mesa o revisa las preparaciones de temporada.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="#contacto">Reservar mesa</a>
+        <a class="button button--ghost" href="#servicios">Ver carta breve</a>
+      </div>
+    </div>
+    <div class="hero-panel" aria-label="Composición visual cálida de Brasa Norte"></div>
+  </section>
+
+  <section class="section" id="servicios">
+    <div class="section-kicker">Especialidades</div>
+    <h2>Una carta simple, honesta y de temporada</h2>
+    <div class="service-grid">
+      <ServiceCard title="Desayunos con masa madre" meta="Mañana" description="Panadería artesanal, huevos de campo, palta y café recién molido." />
+      <ServiceCard title="Almuerzos de estación" meta="Mediodía" description="Platos caseros con carnes, vegetales asados y opciones vegetarianas." />
+      <ServiceCard title="Café y dulcería" meta="Tarde" description="Tostados, filtrados, tortas de la casa y opciones para llevar." />
+    </div>
+  </section>
+
+  <GallerySection
+    title="Rincones y preparaciones"
+    eyebrow="Ambiente"
+    items={[
+      { title: 'Barra de café', description: 'Un punto cálido para pedidos rápidos y conversación.' },
+      { title: 'Mesa familiar', description: 'Reservas para grupos pequeños durante la semana.' },
+      { title: 'Platos de temporada', description: 'Preparaciones que cambian según productos disponibles.' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="testimonial-grid">
+      <TestimonialCard quote="Se siente como almorzar en una casa bien atendida, pero con café muy bueno." author="Marcela R." detail="Clienta frecuente" />
+      <TestimonialCard quote="Reservamos para equipo y salió todo rápido, rico y con súper buena atención." author="Felipe M." detail="Reserva de oficina" />
+      <TestimonialCard quote="La carta es corta, pero todo tiene cariño. Eso se nota al tiro." author="Daniela P." detail="Visita de fin de semana" />
+    </div>
+  </section>
+
+  <FAQ
+    items={[
+      { question: '¿Se puede reservar por WhatsApp?', answer: 'Sí, esta demo usa un número placeholder para simular reservas por WhatsApp.' },
+      { question: '¿Hay opciones vegetarianas?', answer: 'Sí, la landing puede destacar platos vegetarianos y cambios de temporada.' },
+    ]}
+  />
+
+  <section class="contact-section">
+    <ContactForm title="Reserva o consulta disponibilidad" submitLabel="Solicitar reserva" />
+  </section>
+</DemoLayout>

@@ -1,0 +1,27 @@
+---
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+type Props = {
+  items: FAQItem[];
+};
+
+const { items } = Astro.props;
+---
+
+<section class="faq-section" id="faq" aria-labelledby="faq-title">
+  <div class="section-kicker">Preguntas frecuentes</div>
+  <h2 id="faq-title">Dudas antes de contactarnos</h2>
+  <div class="faq-list">
+    {
+      items.map((item) => (
+        <details>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>

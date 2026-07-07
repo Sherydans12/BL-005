@@ -1,0 +1,45 @@
+---
+import SEO from '@components/SEO.astro';
+import { demos } from '@data/demos';
+import '@styles/global.css';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <SEO
+      title="Demos BaseLogic | Landings para comercios"
+      description="Índice de landing pages demo para mostrar estilos comerciales distintos dentro del portafolio de BaseLogic."
+      canonical={Astro.url.href}
+    />
+  </head>
+  <body class="demo-index">
+    <main>
+      <section class="demo-index__hero">
+        <div class="section-kicker">BaseLogic demos</div>
+        <h1>Landings para comercios reales</h1>
+        <p>
+          Cinco direcciones visuales para mostrar cómo BaseLogic puede adaptar una
+          landing a distintos rubros, tonos comerciales y objetivos de conversión.
+        </p>
+      </section>
+
+      <section class="demo-index__grid" aria-label="Listado de demos">
+        {
+          demos.map((demo) => (
+            <a class={`demo-card demo-card--${demo.slug}`} href={demo.href}>
+              <div class="demo-card__swatch" aria-hidden="true"></div>
+              <span class="section-kicker">{demo.category}</span>
+              <h2>{demo.name}</h2>
+              <p>{demo.shortDescription}</p>
+              <p>{demo.tone}</p>
+              <small>Ver demo</small>
+            </a>
+          ))
+        }
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+---
+import ContactForm from '@components/ContactForm.astro';
+import FAQ from '@components/FAQ.astro';
+import GallerySection from '@components/GallerySection.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import TestimonialCard from '@components/TestimonialCard.astro';
+import DemoLayout from '@layouts/DemoLayout.astro';
+import { getDemoBySlug } from '@data/demos';
+import '@styles/themes/autoprime.css';
+
+const demo = getDemoBySlug('autoprime')!;
+---
+
+<DemoLayout
+  title={demo.seoTitle}
+  description={demo.seoDescription}
+  businessName={demo.name}
+  category={demo.category}
+  theme={demo.slug}
+  ctaLabel="Cotizar"
+>
+  <!-- TODO AutoPrime: desarrollar paquetes de mantención, diagnóstico, detailing, garantías y antes/después. -->
+  <section class="demo-hero">
+    <div class="hero-copy">
+      <div class="section-kicker">Diagnóstico · Mantención · Detailing</div>
+      <h1>Servicio técnico claro para autos exigentes</h1>
+      <p>
+        Mantenciones, revisión preventiva y detailing con comunicación directa.
+        Cotiza por WhatsApp y recibe una pauta clara antes de ingresar tu vehículo.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="#contacto">Cotizar servicio</a>
+        <a class="button button--ghost" href="#servicios">Ver prestaciones</a>
+      </div>
+    </div>
+    <div class="hero-panel" aria-label="Composición industrial de AutoPrime"></div>
+  </section>
+
+  <section class="section" id="servicios">
+    <div class="section-kicker">Prestaciones</div>
+    <h2>Proceso técnico, tiempos claros y evidencia visual</h2>
+    <div class="service-grid">
+      <ServiceCard title="Mantención preventiva" meta="Taller" description="Aceite, filtros, inspección general y reporte de puntos críticos." />
+      <ServiceCard title="Diagnóstico scanner" meta="Técnico" description="Lectura de códigos, síntomas y recomendaciones priorizadas por urgencia." />
+      <ServiceCard title="Detailing exterior" meta="Detalle" description="Lavado técnico, descontaminado, corrección básica y protección de pintura." />
+    </div>
+  </section>
+
+  <GallerySection
+    title="Trabajo y evidencia"
+    eyebrow="Taller"
+    items={[
+      { title: 'Ingreso del vehículo', description: 'Registro inicial y checklist visible para el cliente.' },
+      { title: 'Diagnóstico técnico', description: 'Lectura y explicación simple de hallazgos.' },
+      { title: 'Entrega detallada', description: 'Antes/después y recomendaciones para próximos kilómetros.' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="testimonial-grid">
+      <TestimonialCard quote="Me explicaron qué era urgente y qué podía esperar. Eso da confianza." author="Rodrigo H." detail="Mantención 80.000 km" />
+      <TestimonialCard quote="El detailing dejó el auto impecable y mandaron fotos del proceso." author="Valentina Q." detail="Detailing exterior" />
+      <TestimonialCard quote="Cotización clara, sin sorpresas al retirar." author="Mauricio D." detail="Diagnóstico scanner" />
+    </div>
+  </section>
+
+  <FAQ
+    items={[
+      { question: '¿El formulario agenda una hora real?', answer: 'No por ahora. Es visual y luego puede conectarse a WhatsApp, correo o CRM.' },
+      { question: '¿Se pueden mostrar antes y después?', answer: 'Sí, esa es una sección natural para desarrollar en la landing completa.' },
+    ]}
+  />
+
+  <section class="contact-section">
+    <ContactForm title="Cotiza según tu vehículo" submitLabel="Enviar solicitud" />
+  </section>
+</DemoLayout>

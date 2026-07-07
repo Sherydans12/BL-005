@@ -1,0 +1,35 @@
+---
+type Props = {
+  title?: string;
+  description?: string;
+  submitLabel?: string;
+};
+
+const {
+  title = 'Conversemos',
+  description = 'Déjanos tus datos y te contactamos durante el día hábil.',
+  submitLabel = 'Enviar solicitud',
+} = Astro.props;
+---
+
+<form class="contact-form" id="contacto" aria-label={title}>
+  <div class="section-kicker">Contacto</div>
+  <h2>{title}</h2>
+  <p>{description}</p>
+
+  <label>
+    Nombre
+    <input type="text" name="name" placeholder="Nombre y apellido" />
+  </label>
+  <label>
+    Teléfono
+    <input type="tel" name="phone" placeholder="+56 9 1234 5678" />
+  </label>
+  <label>
+    Mensaje
+    <textarea name="message" rows="4" placeholder="Cuéntanos qué necesitas"></textarea>
+  </label>
+
+  <button class="button" type="button">{submitLabel}</button>
+  <small>Formulario visual de demo. No envía datos todavía.</small>
+</form>

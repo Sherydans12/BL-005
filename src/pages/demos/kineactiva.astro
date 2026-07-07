@@ -1,0 +1,80 @@
+---
+import ContactForm from '@components/ContactForm.astro';
+import FAQ from '@components/FAQ.astro';
+import GallerySection from '@components/GallerySection.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import TestimonialCard from '@components/TestimonialCard.astro';
+import DemoLayout from '@layouts/DemoLayout.astro';
+import { getDemoBySlug } from '@data/demos';
+import '@styles/themes/kineactiva.css';
+
+const demo = getDemoBySlug('kineactiva')!;
+---
+
+<DemoLayout
+  title={demo.seoTitle}
+  description={demo.seoDescription}
+  businessName={demo.name}
+  category={demo.category}
+  theme={demo.slug}
+  ctaLabel="Evaluar caso"
+>
+  <!-- TODO KineActiva: desarrollar credenciales, patologías tratadas, proceso clínico y derivaciones. -->
+  <section class="demo-hero">
+    <div class="hero-copy">
+      <div class="section-kicker">Rehabilitación · Dolor · Movimiento</div>
+      <h1>Kinesiología particular con plan claro desde la primera sesión</h1>
+      <p>
+        Evaluación, tratamiento y seguimiento para volver a moverte con seguridad.
+        Atención particular para lesiones, dolor persistente y recuperación funcional.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="#contacto">Evaluar mi caso</a>
+        <a class="button button--ghost" href="#servicios">Ver tratamientos</a>
+      </div>
+    </div>
+    <div class="hero-panel" aria-label="Etapas de atención KineActiva">
+      <span>Sesiones guiadas</span>
+      <span>Alta y seguimiento</span>
+    </div>
+  </section>
+
+  <section class="section" id="servicios">
+    <div class="section-kicker">Tratamientos</div>
+    <h2>Atención ordenada, medible y cercana</h2>
+    <div class="service-grid">
+      <ServiceCard title="Dolor lumbar y cervical" meta="Columna" description="Evaluación de movilidad, educación del dolor y ejercicios progresivos." />
+      <ServiceCard title="Lesiones deportivas" meta="Retorno" description="Plan de fuerza, control de carga y vuelta gradual al entrenamiento." />
+      <ServiceCard title="Rehabilitación postoperatoria" meta="Recuperación" description="Objetivos por etapa, control de síntomas y coordinación con indicaciones médicas." />
+    </div>
+  </section>
+
+  <GallerySection
+    title="Proceso de atención"
+    eyebrow="Método"
+    items={[
+      { title: 'Evaluación funcional', description: 'Se revisa movimiento, dolor, objetivos y contexto diario.' },
+      { title: 'Plan de ejercicios', description: 'Indicaciones simples para avanzar también fuera de consulta.' },
+      { title: 'Seguimiento medible', description: 'Progreso revisado por rangos de movimiento, fuerza y dolor.' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="testimonial-grid">
+      <TestimonialCard quote="Me explicaron muy bien qué estaba pasando y qué tenía que hacer en casa." author="Paula S." detail="Dolor lumbar" />
+      <TestimonialCard quote="Volví a correr con más confianza porque el plan fue paso a paso." author="Cristóbal G." detail="Lesión deportiva" />
+      <TestimonialCard quote="La atención fue clara, profesional y nada alarmista." author="Andrea T." detail="Rehabilitación" />
+    </div>
+  </section>
+
+  <FAQ
+    items={[
+      { question: '¿Atienden con bonos o solo particular?', answer: 'Esta demo está pensada para atención particular. Puede adaptarse si el centro trabaja con convenios.' },
+      { question: '¿Se puede explicar el proceso antes de agendar?', answer: 'Sí, la landing puede incluir una sección detallada de evaluación y criterios de atención.' },
+    ]}
+  />
+
+  <section class="contact-section">
+    <ContactForm title="Cuéntanos qué necesitas recuperar" submitLabel="Solicitar evaluación" />
+  </section>
+</DemoLayout>

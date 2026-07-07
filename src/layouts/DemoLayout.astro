@@ -1,0 +1,47 @@
+---
+import SEO from '@components/SEO.astro';
+import DemoHeader from '@components/DemoHeader.astro';
+import DemoFooter from '@components/DemoFooter.astro';
+import WhatsAppButton from '@components/WhatsAppButton.astro';
+import '@styles/global.css';
+
+type Props = {
+  title: string;
+  description: string;
+  businessName: string;
+  category: string;
+  theme: string;
+  ctaLabel?: string;
+  whatsappMessage?: string;
+};
+
+const {
+  title,
+  description,
+  businessName,
+  category,
+  theme,
+  ctaLabel = 'Agendar',
+  whatsappMessage,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO title={title} description={description} canonical={Astro.url.href} />
+  </head>
+  <body class={`demo-body theme-${theme}`}>
+    <DemoHeader businessName={businessName} category={category} ctaLabel={ctaLabel} />
+    <main>
+      <slot />
+    </main>
+    <DemoFooter businessName={businessName} category={category} />
+    <WhatsAppButton
+      message={whatsappMessage ?? `Hola, quiero información sobre ${businessName}.`}
+    />
+  </body>
+</html>

@@ -1,0 +1,77 @@
+---
+import ContactForm from '@components/ContactForm.astro';
+import FAQ from '@components/FAQ.astro';
+import GallerySection from '@components/GallerySection.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import TestimonialCard from '@components/TestimonialCard.astro';
+import DemoLayout from '@layouts/DemoLayout.astro';
+import { getDemoBySlug } from '@data/demos';
+import '@styles/themes/novawear.css';
+
+const demo = getDemoBySlug('novawear')!;
+---
+
+<DemoLayout
+  title={demo.seoTitle}
+  description={demo.seoDescription}
+  businessName={demo.name}
+  category={demo.category}
+  theme={demo.slug}
+  ctaLabel="Ver catálogo"
+>
+  <!-- TODO NovaWear: desarrollar catálogo, drops, guía de tallas, filtros visuales y productos reales. -->
+  <section class="demo-hero">
+    <div class="hero-copy">
+      <div class="section-kicker">Streetwear · Drops · Catálogo</div>
+      <h1>Ropa urbana lista para el próximo drop</h1>
+      <p>
+        Poleras, overshirts, hoodies y básicos con actitud editorial. Una vitrina
+        simple para mirar la colección y pedir disponibilidad por WhatsApp.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="#galeria">Ver colección</a>
+        <a class="button button--ghost" href="#contacto">Pedir stock</a>
+      </div>
+    </div>
+    <div class="hero-panel" aria-label="Composición editorial de NovaWear"></div>
+  </section>
+
+  <section class="section" id="servicios">
+    <div class="section-kicker">Colección base</div>
+    <h2>Catálogo corto, visual y directo al pedido</h2>
+    <div class="service-grid">
+      <ServiceCard title="Hoodies boxy" meta="Drop" description="Fit amplio, algodón pesado y colores neutros para rotación diaria." />
+      <ServiceCard title="Poleras gráficas" meta="Graphic" description="Diseños limitados con tallas S a XL y reposición según demanda." />
+      <ServiceCard title="Accesorios" meta="Add-on" description="Jockeys, totes y piezas pequeñas para aumentar ticket promedio." />
+    </div>
+  </section>
+
+  <GallerySection
+    title="Editorial de colección"
+    eyebrow="Lookbook"
+    items={[
+      { title: 'Fit urbano', description: 'Siluetas amplias y neutros fáciles de combinar.' },
+      { title: 'Pieza destacada', description: 'Un producto héroe por drop para enfocar conversión.' },
+      { title: 'Detalle gráfico', description: 'Close-ups de textura, etiqueta y estampado.' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="testimonial-grid">
+      <TestimonialCard quote="Pedí por WhatsApp y me confirmaron talla altiro. Muy cómodo." author="Benja C." detail="Compra catálogo" />
+      <TestimonialCard quote="Las fotos ayudan harto a entender el fit antes de comprar." author="Antonia F." detail="Cliente online" />
+      <TestimonialCard quote="Se siente como marca, no solo como una lista de productos." author="Nico R." detail="Drop anterior" />
+    </div>
+  </section>
+
+  <FAQ
+    items={[
+      { question: '¿El catálogo tiene carrito?', answer: 'No en esta etapa. La demo prioriza vitrina y contacto por WhatsApp.' },
+      { question: '¿Se puede agregar guía de tallas?', answer: 'Sí, queda contemplado para una siguiente iteración de la landing.' },
+    ]}
+  />
+
+  <section class="contact-section">
+    <ContactForm title="Consulta talla o disponibilidad" submitLabel="Consultar stock" />
+  </section>
+</DemoLayout>
