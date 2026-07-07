@@ -1,7 +1,6 @@
 ---
 import ContactForm from '@components/ContactForm.astro';
 import FAQ from '@components/FAQ.astro';
-import GallerySection from '@components/GallerySection.astro';
 import ServiceCard from '@components/ServiceCard.astro';
 import TestimonialCard from '@components/TestimonialCard.astro';
 import DemoLayout from '@layouts/DemoLayout.astro';
@@ -9,6 +8,62 @@ import { getDemoBySlug } from '@data/demos';
 import '@styles/themes/kineactiva.css';
 
 const demo = getDemoBySlug('kineactiva')!;
+
+const needs = [
+  {
+    title: 'Dolor lumbar o cervical',
+    detail: 'Molestias que limitan trabajo, descanso, deporte o tareas cotidianas.',
+  },
+  {
+    title: 'Lesiones deportivas',
+    detail: 'Esguinces, sobrecarga, molestias al entrenar o retorno progresivo a actividad.',
+  },
+  {
+    title: 'Post operatorio',
+    detail: 'Rehabilitación guiada según indicación médica y etapa de recuperación.',
+  },
+  {
+    title: 'Adulto mayor',
+    detail: 'Movilidad, equilibrio, fuerza funcional y seguridad en actividades diarias.',
+  },
+  {
+    title: 'Movilidad y postura',
+    detail: 'Evaluación de patrones de movimiento, hábitos y ejercicios correctivos.',
+  },
+];
+
+const processSteps = [
+  {
+    number: '01',
+    title: 'Evaluación inicial',
+    detail: 'Conversamos el motivo de consulta, historial, objetivos y revisamos movilidad, fuerza y tolerancia al movimiento.',
+  },
+  {
+    number: '02',
+    title: 'Plan personalizado',
+    detail: 'Definimos objetivos realistas por etapa, frecuencia sugerida y ejercicios seguros para complementar en casa.',
+  },
+  {
+    number: '03',
+    title: 'Seguimiento',
+    detail: 'Ajustamos carga, técnica y progresión según respuesta clínica, síntomas y avances funcionales observados.',
+  },
+  {
+    number: '04',
+    title: 'Educación y autonomía',
+    detail: 'Explicamos el proceso con lenguaje claro para que cada paciente entienda cómo cuidarse entre sesiones.',
+  },
+];
+
+const suggestedImages = [
+  'hero-kinesiologo-consulta.webp',
+  'rehabilitacion-deportiva.webp',
+  'dolor-lumbar.webp',
+  'terapia-adulto-mayor.webp',
+  'consulta-evaluacion.webp',
+  'sala-rehabilitacion.webp',
+  'profesional-kinesiologia.webp',
+];
 ---
 
 <DemoLayout
@@ -17,72 +72,285 @@ const demo = getDemoBySlug('kineactiva')!;
   businessName={demo.name}
   category={demo.category}
   theme={demo.slug}
-  ctaLabel="Evaluar caso"
+  ctaLabel="Agendar evaluación"
   headerVariant="solid"
+  whatsappMessage="Hola, quiero agendar una evaluación inicial en KineActiva."
 >
-  <!--
-    TODO KineActiva:
-    Identidad: clínica, confiable y clara, con azul petróleo, celeste, blanco y verde salud.
-    Desarrollar: credenciales, patologías, proceso de evaluación, planes de tratamiento y derivaciones.
-    No tocar: rutas, DemoLayout, themes de otras demos ni contenido de otras landings.
-    Este chat especializado debe trabajar solo src/pages/demos/kineactiva.astro y su theme.
-  -->
-  <section class="demo-hero">
+  <section class="demo-hero kine-hero">
     <div class="hero-copy">
-      <div class="section-kicker">Rehabilitación · Dolor · Movimiento</div>
-      <h1>Kinesiología particular con plan claro desde la primera sesión</h1>
+      <div class="section-kicker">Kinesiología particular en Ñuñoa</div>
+      <h1>Recupera movimiento con una evaluación clara y un plan seguro</h1>
       <p>
-        Evaluación, tratamiento y seguimiento para volver a moverte con seguridad.
-        Atención particular para lesiones, dolor persistente y recuperación funcional.
+        Atención kinésica para dolor, lesiones deportivas, recuperación post operatoria y movilidad funcional.
+        Te acompañamos con objetivos concretos, seguimiento profesional y ejercicios explicados paso a paso.
       </p>
       <div class="hero-actions">
-        <a class="button" href="#contacto">Evaluar mi caso</a>
-        <a class="button button--ghost" href="#servicios">Ver tratamientos</a>
+        <a class="button" href="#contacto">Agendar evaluación</a>
+        <a class="button button--ghost" href="#tratamientos">Ver tratamientos</a>
+      </div>
+      <div class="trust-strip" aria-label="Puntos de confianza">
+        <span>Atención personalizada</span>
+        <span>Evaluación inicial</span>
+        <span>Plan de recuperación</span>
       </div>
     </div>
-    <div class="hero-panel" aria-label="Etapas de atención KineActiva">
-      <span>Sesiones guiadas</span>
-      <span>Alta y seguimiento</span>
+
+    <div class="hero-panel kine-hero__visual" role="img" aria-label="Consulta de kinesiología con evaluación guiada">
+      <div class="image-fallback image-fallback--hero">
+        <span>Imagen sugerida</span>
+        <strong>hero-kinesiologo-consulta.webp</strong>
+      </div>
+      <aside class="clinical-card">
+        <span>Primera sesión</span>
+        <strong>Evaluación funcional + objetivos de tratamiento</strong>
+      </aside>
     </div>
   </section>
 
-  <section class="section" id="servicios">
-    <div class="section-kicker">Tratamientos</div>
-    <h2>Atención ordenada, medible y cercana</h2>
+  <section class="section needs-section" aria-labelledby="needs-title">
+    <div class="section-kicker">Motivos de consulta</div>
+    <div class="section-heading">
+      <h2 id="needs-title">Problemas frecuentes que evaluamos antes de iniciar tratamiento</h2>
+      <p>
+        Cada caso se revisa de forma individual. La indicación final depende de la evaluación profesional,
+        antecedentes y evolución del paciente.
+      </p>
+    </div>
+    <div class="needs-grid">
+      {
+        needs.map((item) => (
+          <article class="need-item">
+            <span aria-hidden="true"></span>
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section treatment-section" id="tratamientos" aria-labelledby="treatments-title">
+    <div class="section-kicker">Tratamientos y especialidades</div>
+    <div class="section-heading section-heading--split">
+      <h2 id="treatments-title">Trabajo clínico ordenado para avanzar con seguridad</h2>
+      <p>
+        Servicios pensados para pacientes particulares que necesitan entender qué ocurre,
+        cómo se trabajará y qué pueden hacer entre sesiones.
+      </p>
+    </div>
     <div class="service-grid">
-      <ServiceCard variant="featured" title="Dolor lumbar y cervical" meta="Columna" description="Evaluación de movilidad, educación del dolor y ejercicios progresivos." />
-      <ServiceCard title="Lesiones deportivas" meta="Retorno" description="Plan de fuerza, control de carga y vuelta gradual al entrenamiento." />
-      <ServiceCard title="Rehabilitación postoperatoria" meta="Recuperación" description="Objetivos por etapa, control de síntomas y coordinación con indicaciones médicas." />
+      <ServiceCard
+        variant="featured"
+        title="Kinesiología musculoesquelética"
+        meta="Dolor y movimiento"
+        description="Evaluación de movilidad, fuerza, dolor y funcionalidad para construir un plan de tratamiento progresivo."
+      />
+      <ServiceCard
+        title="Rehabilitación deportiva"
+        meta="Retorno seguro"
+        description="Control de carga, ejercicios de fuerza y vuelta gradual a entrenamiento según tolerancia y objetivo."
+      />
+      <ServiceCard
+        title="Terapia para dolor lumbar"
+        meta="Columna"
+        description="Educación, movilidad y fortalecimiento orientados a recuperar confianza en el movimiento diario."
+      />
+      <ServiceCard
+        title="Reintegro funcional"
+        meta="Actividad diaria"
+        description="Trabajo por etapas para volver a tareas laborales, domésticas o deportivas con criterios claros."
+      />
+      <ServiceCard
+        title="Evaluación postural"
+        meta="Hábitos y técnica"
+        description="Revisión de patrones de movimiento, ergonomía básica y ejercicios correctivos cuando corresponde."
+      />
+      <ServiceCard
+        title="Atención adulto mayor"
+        meta="Movilidad"
+        description="Ejercicios guiados para equilibrio, fuerza funcional y seguridad en rutinas cotidianas."
+      />
     </div>
   </section>
 
-  <GallerySection
-    title="Proceso de atención"
-    eyebrow="Método"
-    layout="grid"
-    items={[
-      { title: 'Evaluación funcional', description: 'Se revisa movimiento, dolor, objetivos y contexto diario.' },
-      { title: 'Plan de ejercicios', description: 'Indicaciones simples para avanzar también fuera de consulta.' },
-      { title: 'Seguimiento medible', description: 'Progreso revisado por rangos de movimiento, fuerza y dolor.' },
-    ]}
-  />
+  <section class="section method-section" aria-labelledby="method-title">
+    <div class="method-intro">
+      <div>
+        <div class="section-kicker">Método de atención</div>
+        <h2 id="method-title">Un proceso simple, medible y explicado desde el inicio</h2>
+      </div>
+      <p>
+        La consulta combina evaluación, tratamiento en sesión, educación y ejercicios para casa.
+        El plan se ajusta según evolución y respuesta individual.
+      </p>
+    </div>
+    <div class="method-grid">
+      {
+        processSteps.map((step) => (
+          <article class="method-step">
+            <span>{step.number}</span>
+            <h3>{step.title}</h3>
+            <p>{step.detail}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
 
-  <section class="section">
+  <section class="section professional-section" aria-labelledby="professional-title">
+    <div class="professional-photo" role="img" aria-label="Profesional de kinesiología en sala de rehabilitación">
+      <div class="image-fallback">
+        <span>Imagen sugerida</span>
+        <strong>profesional-kinesiologia.webp</strong>
+      </div>
+    </div>
+    <div class="professional-copy">
+      <div class="section-kicker">Profesional y confianza</div>
+      <h2 id="professional-title">Atención cercana, criterio clínico y comunicación clara</h2>
+      <p>
+        KineActiva representa una consulta particular liderada por un kinesiólogo con enfoque
+        musculoesquelético y funcional. La atención prioriza escuchar al paciente, revisar su contexto
+        y definir objetivos alcanzables sin promesas absolutas.
+      </p>
+      <ul class="credential-list" aria-label="Credenciales y enfoque">
+        <li>Kinesiólogo titulado, enfoque en rehabilitación musculoesquelética.</li>
+        <li>Formación continua en ejercicio terapéutico y control de carga.</li>
+        <li>Coordinación con indicaciones médicas cuando el caso lo requiere.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section visual-plan-section" aria-labelledby="visual-plan-title">
+    <div class="section-heading section-heading--split">
+      <div>
+        <div class="section-kicker">Recursos visuales</div>
+        <h2 id="visual-plan-title">Imágenes pensadas para una consulta real y reemplazables</h2>
+      </div>
+      <p>
+        Esta demo deja preparada la estructura visual con nombres de archivos locales. Al cargar fotos reales,
+        el sitio gana cercanía sin depender de recursos externos.
+      </p>
+    </div>
+    <div class="asset-grid">
+      {
+        suggestedImages.slice(1, 5).map((asset) => (
+          <article class="asset-tile">
+            <div class="image-fallback">
+              <span>Reemplazar por</span>
+              <strong>{asset}</strong>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section schedule-section" aria-labelledby="schedule-title">
+    <div class="schedule-copy">
+      <div class="section-kicker">Agenda y horarios</div>
+      <h2 id="schedule-title">Agenda tu evaluación inicial por WhatsApp</h2>
+      <p>
+        Indica tu motivo de consulta, disponibilidad y si cuentas con indicación médica.
+        Te responderemos con alternativas de horario y orientación para la primera sesión.
+      </p>
+      <a
+        class="button"
+        href="https://wa.me/56912345678?text=Hola%2C%20quiero%20agendar%20una%20evaluaci%C3%B3n%20inicial%20en%20KineActiva."
+      >
+        Escribir por WhatsApp
+      </a>
+    </div>
+    <div class="schedule-card">
+      <h3>Consulta KineActiva</h3>
+      <dl>
+        <div>
+          <dt>Horario</dt>
+          <dd>Lunes a viernes, 09:00 a 19:00</dd>
+        </div>
+        <div>
+          <dt>Sábado</dt>
+          <dd>09:30 a 13:30, con agenda previa</dd>
+        </div>
+        <div>
+          <dt>Ubicación</dt>
+          <dd>Av. Irarrázaval 2450, oficina 604, Ñuñoa</dd>
+        </div>
+        <div>
+          <dt>Mensaje sugerido</dt>
+          <dd>Hola, quiero agendar una evaluación inicial en KineActiva.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section testimonials-section" aria-labelledby="testimonials-title">
+    <div class="section-heading">
+      <div class="section-kicker">Experiencias</div>
+      <h2 id="testimonials-title">Pacientes que valoran claridad, seguimiento y confianza</h2>
+    </div>
     <div class="testimonial-grid">
-      <TestimonialCard quote="Me explicaron muy bien qué estaba pasando y qué tenía que hacer en casa." author="Paula S." detail="Dolor lumbar" />
-      <TestimonialCard quote="Volví a correr con más confianza porque el plan fue paso a paso." author="Cristóbal G." detail="Lesión deportiva" />
-      <TestimonialCard quote="La atención fue clara, profesional y nada alarmista." author="Andrea T." detail="Rehabilitación" />
+      <TestimonialCard
+        variant="statement"
+        quote="Me explicaron muy bien qué estaba pasando y cómo avanzar sin apurar el proceso."
+        author="Paula S."
+        detail="Dolor lumbar"
+      />
+      <TestimonialCard
+        quote="Volví a entrenar de a poco, con ejercicios claros y revisiones en cada sesión."
+        author="Cristóbal G."
+        detail="Lesión deportiva"
+      />
+      <TestimonialCard
+        quote="La atención fue profesional y cercana. Sentí que el plan tenía sentido para mi rutina."
+        author="Andrea T."
+        detail="Rehabilitación funcional"
+      />
     </div>
   </section>
 
   <FAQ
     items={[
-      { question: '¿Atienden con bonos o solo particular?', answer: 'Esta demo está pensada para atención particular. Puede adaptarse si el centro trabaja con convenios.' },
-      { question: '¿Se puede explicar el proceso antes de agendar?', answer: 'Sí, la landing puede incluir una sección detallada de evaluación y criterios de atención.' },
+      {
+        question: '¿Necesito orden médica?',
+        answer:
+          'No siempre. Puedes agendar una evaluación kinésica particular, pero si tienes exámenes, diagnóstico médico o indicaciones previas, conviene llevarlos.',
+      },
+      {
+        question: '¿Cuánto dura una sesión?',
+        answer:
+          'La duración referencial es de 45 a 60 minutos, según el tipo de evaluación, tratamiento y objetivos de la etapa.',
+      },
+      {
+        question: '¿Atienden lesiones deportivas?',
+        answer:
+          'Sí. Se evalúa la lesión, la carga de entrenamiento y el objetivo de retorno para definir una progresión segura.',
+      },
+      {
+        question: '¿Puedo agendar por WhatsApp?',
+        answer:
+          'Sí. Puedes escribir al WhatsApp de la demo con tu motivo de consulta y disponibilidad para coordinar una evaluación inicial.',
+      },
+      {
+        question: '¿Qué debo llevar a la primera sesión?',
+        answer:
+          'Ropa cómoda, exámenes o informes si los tienes, y una idea de tus objetivos: volver a entrenar, trabajar sin molestias o moverte con más seguridad.',
+      },
     ]}
   />
 
-  <section class="contact-section">
-    <ContactForm title="Cuéntanos qué necesitas recuperar" submitLabel="Solicitar evaluación" />
+  <section class="contact-section kine-contact">
+    <div class="contact-panel-copy">
+      <div class="section-kicker">Cierre</div>
+      <h2>Agenda tu evaluación inicial</h2>
+      <p>
+        Cuéntanos qué te está limitando y revisaremos el mejor punto de partida para tu plan de recuperación.
+      </p>
+    </div>
+    <ContactForm
+      title="Solicitar orientación"
+      description="Formulario visual de demo para captar solicitudes de pacientes particulares."
+      submitLabel="Solicitar evaluación"
+      variant="panel"
+    />
   </section>
 </DemoLayout>

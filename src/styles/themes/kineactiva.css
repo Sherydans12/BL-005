@@ -1,13 +1,15 @@
 .theme-kineactiva {
-  --page-bg: #f3fafb;
+  --page-bg: #f4fbfb;
   --surface: #ffffff;
-  --surface-muted: #e1f3f6;
+  --surface-muted: #e6f5f7;
   --text: #102f39;
-  --text-muted: #52727a;
+  --text-muted: #58747a;
   --border: rgba(15, 76, 92, 0.16);
   --primary: #0f4c5c;
   --primary-contrast: #ffffff;
-  --accent: #42a87d;
+  --accent: #3aa978;
+  --accent-soft: #dff4ea;
+  --clinical-blue: #bfe8ef;
   --display-weight: 780;
   --heading-weight: 760;
   --radius: 8px;
@@ -19,62 +21,503 @@
   --card-shadow: 0 12px 34px rgba(15, 76, 92, 0.08);
   --input-bg: #f7fcfd;
   --gallery-media-bg:
-    linear-gradient(135deg, rgba(15, 76, 92, 0.9), rgba(66, 168, 125, 0.65)),
+    linear-gradient(135deg, rgba(15, 76, 92, 0.9), rgba(58, 169, 120, 0.64)),
     #e1f3f6;
-  --whatsapp-bg: #42a87d;
+  --whatsapp-bg: #32a56d;
 }
 
-.theme-kineactiva .demo-hero {
+.theme-kineactiva .demo-header {
+  border-bottom-color: rgba(15, 76, 92, 0.12);
+}
+
+.theme-kineactiva h1 {
+  max-width: 12.5ch;
+}
+
+.theme-kineactiva h2 {
+  max-width: 13ch;
+}
+
+.theme-kineactiva .button--ghost {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.theme-kineactiva .kine-hero {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+  grid-template-columns: minmax(0, 0.92fr) minmax(22rem, 0.78fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
   padding-top: clamp(3rem, 6vw, 5rem);
 }
 
-.theme-kineactiva .hero-copy {
-  max-width: 860px;
+.theme-kineactiva .hero-copy p {
+  max-width: 58ch;
 }
 
-.theme-kineactiva .hero-copy h1 {
-  max-width: 14ch;
-}
-
-.theme-kineactiva .hero-panel {
+.theme-kineactiva .trust-strip {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  min-height: 14rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  max-width: 44rem;
+}
+
+.theme-kineactiva .trust-strip span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3.2rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid rgba(15, 76, 92, 0.13);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.theme-kineactiva .trust-strip span::before,
+.theme-kineactiva .need-item span::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+.theme-kineactiva .kine-hero__visual {
+  position: relative;
+  min-height: clamp(27rem, 46vw, 36rem);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(15, 76, 92, 0) 42%, rgba(15, 76, 92, 0.76) 100%),
+    linear-gradient(135deg, #d9f3f7 0%, #ffffff 48%, #dff4ea 100%);
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 24px 64px rgba(15, 76, 92, 0.16);
+}
+
+.theme-kineactiva .image-fallback {
+  display: grid;
+  align-content: end;
+  min-height: 100%;
+  padding: 1rem;
+  border: 1px dashed rgba(15, 76, 92, 0.26);
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(15, 76, 92, 0.07) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(15, 76, 92, 0.07) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(191, 232, 239, 0.88), rgba(255, 255, 255, 0.9) 52%, rgba(223, 244, 234, 0.92));
+  background-size: 26px 26px, 26px 26px, auto;
+  color: var(--primary);
+}
+
+.theme-kineactiva .image-fallback--hero {
+  position: absolute;
+  inset: 1rem;
+  z-index: 0;
+  min-height: auto;
+  opacity: 0.92;
+}
+
+.theme-kineactiva .image-fallback span {
+  margin-bottom: 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.theme-kineactiva .image-fallback strong {
+  max-width: 18ch;
+  font-size: clamp(1.15rem, 2.6vw, 1.8rem);
+  line-height: 1.05;
+}
+
+.theme-kineactiva .clinical-card {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  width: min(17rem, calc(100% - 2rem));
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 44px rgba(15, 76, 92, 0.18);
+}
+
+.theme-kineactiva .clinical-card span {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.theme-kineactiva .clinical-card strong {
+  color: var(--primary);
+  line-height: 1.25;
+}
+
+.theme-kineactiva .section-heading {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.theme-kineactiva .section-heading p,
+.theme-kineactiva .method-intro p,
+.theme-kineactiva .schedule-copy p,
+.theme-kineactiva .professional-copy p,
+.theme-kineactiva .contact-panel-copy p {
+  max-width: 66ch;
+}
+
+.theme-kineactiva .section-heading--split,
+.theme-kineactiva .method-intro,
+.theme-kineactiva .schedule-section,
+.theme-kineactiva .professional-section,
+.theme-kineactiva .kine-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.theme-kineactiva .needs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border: 1px solid var(--border);
+  border-radius: 8px;
   overflow: hidden;
   background: var(--border);
-  box-shadow: none;
+  gap: 1px;
 }
 
-.theme-kineactiva .hero-panel::before,
-.theme-kineactiva .hero-panel::after {
-  content: "Evaluación inicial";
-}
-
-.theme-kineactiva .hero-panel::before,
-.theme-kineactiva .hero-panel::after,
-.theme-kineactiva .hero-panel span {
-  display: grid;
-  place-items: center;
+.theme-kineactiva .need-item {
+  min-height: 15rem;
+  padding: 1rem;
   background: var(--surface);
-  color: var(--primary);
-  font-weight: 800;
-  text-align: center;
 }
 
-.theme-kineactiva .hero-panel::after {
-  content: "Plan de tratamiento";
+.theme-kineactiva .need-item span {
+  display: flex;
+  height: 2.4rem;
+  align-items: center;
+}
+
+.theme-kineactiva .need-item h3 {
+  margin-bottom: 0.7rem;
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+
+.theme-kineactiva .need-item p {
+  font-size: 0.95rem;
+}
+
+.theme-kineactiva .service-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .theme-kineactiva .service-card {
   border-left: 5px solid var(--accent);
+  box-shadow: none;
 }
 
-@media (max-width: 720px) {
-  .theme-kineactiva .hero-panel {
+.theme-kineactiva .service-card--featured {
+  border-left-color: var(--clinical-blue);
+  background:
+    linear-gradient(135deg, rgba(58, 169, 120, 0.18), transparent 50%),
+    var(--primary);
+}
+
+.theme-kineactiva .service-card span {
+  margin-bottom: 1.6rem;
+}
+
+.theme-kineactiva .method-section {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  border-block: 1px solid rgba(15, 76, 92, 0.1);
+}
+
+.theme-kineactiva .method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.theme-kineactiva .method-step {
+  min-height: 18rem;
+  padding: 1.1rem;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.theme-kineactiva .method-step:last-child {
+  border-right: 0;
+}
+
+.theme-kineactiva .method-step span {
+  display: inline-grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  margin-bottom: 3rem;
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--primary);
+  font-weight: 850;
+}
+
+.theme-kineactiva .method-step h3 {
+  margin-bottom: 0.7rem;
+  color: var(--primary);
+}
+
+.theme-kineactiva .professional-section {
+  align-items: center;
+}
+
+.theme-kineactiva .professional-photo {
+  min-height: clamp(25rem, 44vw, 34rem);
+  padding: 1rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #d9f3f7, #ffffff 55%, #dff4ea);
+  background-size: cover;
+  background-position: center;
+}
+
+.theme-kineactiva .credential-list {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1.4rem;
+  padding: 0;
+  list-style: none;
+}
+
+.theme-kineactiva .credential-list li {
+  padding: 0.9rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--card-shadow);
+}
+
+.theme-kineactiva .asset-grid {
+  display: grid;
+  grid-template-columns: 1.2fr repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.theme-kineactiva .asset-tile {
+  min-height: 17rem;
+}
+
+.theme-kineactiva .asset-tile:nth-child(1) {
+  min-height: 22rem;
+}
+
+.theme-kineactiva .asset-tile:nth-child(1) .image-fallback {
+  background: linear-gradient(135deg, rgba(191, 232, 239, 0.88), rgba(255, 255, 255, 0.9) 52%, rgba(223, 244, 234, 0.92));
+  background-size: cover;
+  background-position: center;
+}
+
+.theme-kineactiva .asset-tile:nth-child(2) .image-fallback {
+  background: linear-gradient(135deg, rgba(191, 232, 239, 0.88), rgba(255, 255, 255, 0.9) 52%, rgba(223, 244, 234, 0.92));
+  background-size: cover;
+  background-position: center;
+}
+
+.theme-kineactiva .asset-tile:nth-child(3) .image-fallback {
+  background: linear-gradient(135deg, rgba(191, 232, 239, 0.88), rgba(255, 255, 255, 0.9) 52%, rgba(223, 244, 234, 0.92));
+  background-size: cover;
+  background-position: center;
+}
+
+.theme-kineactiva .asset-tile:nth-child(4) .image-fallback {
+  background: linear-gradient(135deg, rgba(191, 232, 239, 0.88), rgba(255, 255, 255, 0.9) 52%, rgba(223, 244, 234, 0.92));
+  background-size: cover;
+  background-position: center;
+}
+
+.theme-kineactiva .asset-tile,
+.theme-kineactiva .asset-tile .image-fallback {
+  height: 100%;
+}
+
+.theme-kineactiva .schedule-section {
+  align-items: stretch;
+  padding: clamp(2rem, 5vw, 3rem);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(230, 245, 247, 0.78), rgba(255, 255, 255, 0.86)),
+    var(--surface);
+  box-shadow: 0 18px 54px rgba(15, 76, 92, 0.08);
+}
+
+.theme-kineactiva .schedule-copy {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.theme-kineactiva .schedule-copy .button {
+  width: fit-content;
+}
+
+.theme-kineactiva .schedule-card {
+  padding: 1.25rem;
+  border-radius: 8px;
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.theme-kineactiva .schedule-card h3 {
+  margin-bottom: 1.2rem;
+}
+
+.theme-kineactiva .schedule-card dl {
+  display: grid;
+  gap: 0;
+}
+
+.theme-kineactiva .schedule-card div {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.theme-kineactiva .schedule-card dt {
+  margin-bottom: 0.25rem;
+  color: var(--clinical-blue);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.theme-kineactiva .schedule-card dd {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.theme-kineactiva .testimonial-card {
+  box-shadow: none;
+}
+
+.theme-kineactiva .testimonial-card--statement {
+  background:
+    linear-gradient(135deg, rgba(58, 169, 120, 0.2), transparent),
+    var(--primary);
+}
+
+.theme-kineactiva .kine-contact {
+  align-items: stretch;
+}
+
+.theme-kineactiva .contact-panel-copy {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 8px;
+  background: var(--primary);
+}
+
+.theme-kineactiva .contact-panel-copy h2,
+.theme-kineactiva .contact-panel-copy p {
+  color: var(--primary-contrast);
+}
+
+.theme-kineactiva .contact-panel-copy .section-kicker {
+  color: var(--clinical-blue);
+}
+
+.theme-kineactiva .contact-form--panel {
+  box-shadow: none;
+}
+
+@media (max-width: 1080px) {
+  .theme-kineactiva .needs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .theme-kineactiva .method-grid,
+  .theme-kineactiva .asset-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .theme-kineactiva .method-step:nth-child(2) {
+    border-right: 0;
+  }
+
+  .theme-kineactiva .method-step:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 920px) {
+  .theme-kineactiva .kine-hero,
+  .theme-kineactiva .section-heading--split,
+  .theme-kineactiva .method-intro,
+  .theme-kineactiva .schedule-section,
+  .theme-kineactiva .professional-section,
+  .theme-kineactiva .kine-contact {
     grid-template-columns: 1fr;
+  }
+
+  .theme-kineactiva h1,
+  .theme-kineactiva h2 {
+    max-width: 15ch;
+  }
+
+  .theme-kineactiva .kine-hero__visual {
+    min-height: 28rem;
+  }
+
+  .theme-kineactiva .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-kineactiva .trust-strip,
+  .theme-kineactiva .needs-grid,
+  .theme-kineactiva .method-grid,
+  .theme-kineactiva .asset-grid,
+  .theme-kineactiva .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-kineactiva .method-step,
+  .theme-kineactiva .method-step:nth-child(2),
+  .theme-kineactiva .method-step:nth-child(-n + 2) {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .theme-kineactiva .method-step:last-child {
+    border-bottom: 0;
+  }
+
+  .theme-kineactiva .method-step span {
+    margin-bottom: 2rem;
+  }
+
+  .theme-kineactiva .schedule-copy .button {
+    width: 100%;
+  }
+
+  .theme-kineactiva .kine-hero__visual,
+  .theme-kineactiva .professional-photo {
+    min-height: 24rem;
   }
 }
