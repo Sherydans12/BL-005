@@ -1,14 +1,135 @@
 ---
-import ContactForm from '@components/ContactForm.astro';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import FAQ from '@components/FAQ.astro';
-import GallerySection from '@components/GallerySection.astro';
-import ServiceCard from '@components/ServiceCard.astro';
 import TestimonialCard from '@components/TestimonialCard.astro';
 import DemoLayout from '@layouts/DemoLayout.astro';
 import { getDemoBySlug } from '@data/demos';
 import '@styles/themes/autoprime.css';
 
 const demo = getDemoBySlug('autoprime')!;
+const assetBase = '/assets/demos/autoprime';
+const assetDir = join(process.cwd(), 'public', 'assets', 'demos', 'autoprime');
+const getAutoAsset = (fileName: string) => ({
+  fileName,
+  src: `${assetBase}/${fileName}`,
+  exists: existsSync(join(assetDir, fileName)),
+});
+
+const whatsappBase = 'https://wa.me/56912345678';
+const quoteMessage = encodeURIComponent(
+  'Hola AutoPrime, quiero cotizar un servicio automotriz. Mi vehiculo es:'
+);
+const whatsappHref = `${whatsappBase}?text=${quoteMessage}`;
+
+const assets = {
+  hero: getAutoAsset('hero-taller-mecanico.webp'),
+  scanner: getAutoAsset('diagnostico-scanner.webp'),
+  brakes: getAutoAsset('mantencion-frenos.webp'),
+  oil: getAutoAsset('cambio-aceite.webp'),
+  detailing: getAutoAsset('detailing-auto.webp'),
+  beforeAfter: getAutoAsset('antes-despues-detailing.webp'),
+  workshop: getAutoAsset('taller-profesional.webp'),
+  mechanic: getAutoAsset('mecanico-trabajando.webp'),
+};
+
+const quickStats = [
+  { label: 'Diagnostico', value: 'Scanner y pauta' },
+  { label: 'Mantencion', value: 'Por kilometraje' },
+  { label: 'Detailing', value: 'Interior / exterior' },
+  { label: 'Agenda', value: 'Respuesta rapida' },
+];
+
+const services = [
+  {
+    number: '01',
+    title: 'Mantencion preventiva',
+    tag: 'Kilometraje',
+    description:
+      'Aceite, filtros, niveles, luces y revision general segun estado del vehiculo.',
+    asset: assets.oil,
+    alt: 'Cambio de aceite y filtros en taller automotriz',
+  },
+  {
+    number: '02',
+    title: 'Scanner automotriz',
+    tag: 'Diagnostico',
+    description:
+      'Lectura de codigos, sintomas reportados y recomendaciones priorizadas por urgencia.',
+    asset: assets.scanner,
+    alt: 'Diagnostico scanner conectado a un vehiculo',
+  },
+  {
+    number: '03',
+    title: 'Frenos y suspension',
+    tag: 'Seguridad',
+    description:
+      'Revision de pastillas, discos, amortiguadores, ruidos y desgaste visible.',
+    asset: assets.brakes,
+    alt: 'Mantencion de frenos y suspension de automovil',
+  },
+  {
+    number: '04',
+    title: 'Cambio de aceite y filtros',
+    tag: 'Rapido',
+    description:
+      'Servicio directo con insumos informados y checklist basico de puntos criticos.',
+    asset: assets.oil,
+    alt: 'Tecnico realizando cambio de aceite de motor',
+  },
+  {
+    number: '05',
+    title: 'Detailing interior/exterior',
+    tag: 'Detalle',
+    description:
+      'Lavado tecnico, descontaminado, limpieza interior y proteccion segun necesidad.',
+    asset: assets.detailing,
+    alt: 'Detailing exterior de auto en taller limpio',
+  },
+  {
+    number: '06',
+    title: 'Pre-revision tecnica',
+    tag: 'Checklist',
+    description:
+      'Revision preventiva de luces, frenos, neumaticos, fluidos y observaciones visibles.',
+    asset: assets.mechanic,
+    alt: 'Mecanico revisando vehiculo antes de revision tecnica',
+  },
+];
+
+const processSteps = [
+  {
+    title: 'Recepcion del vehiculo',
+    text: 'Registramos motivo de visita, kilometraje, sintomas y prioridad del cliente.',
+  },
+  {
+    title: 'Evaluacion tecnica',
+    text: 'Revisamos puntos criticos, scanner si corresponde y evidencia visual disponible.',
+  },
+  {
+    title: 'Cotizacion clara',
+    text: 'Informamos trabajos sugeridos, repuestos y aprobacion antes de ejecutar.',
+  },
+  {
+    title: 'Ejecucion del servicio',
+    text: 'Realizamos la mantencion o reparacion acordada con orden de trabajo.',
+  },
+  {
+    title: 'Entrega y recomendaciones',
+    text: 'Explicamos lo realizado, proximos cuidados y alertas para revisar a futuro.',
+  },
+];
+
+const trustItems = [
+  'Presupuesto antes de ejecutar',
+  'Repuestos informados al cliente',
+  'Comunicacion por WhatsApp',
+  'Garantia de servicio realizado',
+  'Registro fotografico opcional',
+  'Checklist de entrega',
+];
+
+const vehicleTypes = ['Autos particulares', 'SUV', 'Camionetas', 'Flotas pequenas'];
 ---
 
 <DemoLayout
@@ -19,67 +140,302 @@ const demo = getDemoBySlug('autoprime')!;
   theme={demo.slug}
   ctaLabel="Cotizar"
   headerVariant="solid"
+  whatsappMessage="Hola AutoPrime, quiero cotizar un servicio automotriz. Mi vehiculo es:"
 >
-  <!--
-    TODO AutoPrime:
-    Identidad: industrial, técnica y precisa, con grafito, negro, amarillo seguridad y naranjo/acero.
-    Desarrollar: paquetes de mantención, diagnóstico, detailing, garantías, antes/después y checklist técnico.
-    No tocar: rutas, DemoLayout, themes de otras demos ni contenido de otras landings.
-    Este chat especializado debe trabajar solo src/pages/demos/autoprime.astro y su theme.
-  -->
-  <section class="demo-hero">
-    <div class="hero-copy">
-      <div class="section-kicker">Diagnóstico · Mantención · Detailing</div>
-      <h1>Servicio técnico claro para autos exigentes</h1>
+  <section class="ap-hero">
+    <div class="ap-hero__copy">
+      <div class="section-kicker">Taller mecanico · Detailing · Mantencion</div>
+      <h1>Diagnostico claro antes de tocar tu auto</h1>
       <p>
-        Mantenciones, revisión preventiva y detailing con comunicación directa.
-        Cotiza por WhatsApp y recibe una pauta clara antes de ingresar tu vehículo.
+        AutoPrime muestra como un taller puede captar clientes con una pagina
+        directa: servicios visibles, proceso ordenado, confianza tecnica y
+        cotizacion rapida por WhatsApp.
       </p>
       <div class="hero-actions">
-        <a class="button" href="#contacto">Cotizar servicio</a>
-        <a class="button button--ghost" href="#servicios">Ver prestaciones</a>
+        <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+        <a class="button button--ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <dl class="ap-quick-grid" aria-label="Datos rapidos de AutoPrime">
+        {
+          quickStats.map((stat) => (
+            <div>
+              <dt>{stat.label}</dt>
+              <dd>{stat.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+
+    <div class="ap-hero__visual">
+      <div class="ap-image ap-image--hero" data-fallback={`Reemplazar: ${assets.hero.fileName}`}>
+        {
+          assets.hero.exists && (
+            <img
+              src={assets.hero.src}
+              alt="Taller mecanico profesional con auto en area de mantencion"
+              width="900"
+              height="980"
+              fetchpriority="high"
+            />
+          )
+        }
+      </div>
+      <div class="ap-gauge" aria-label="Estado de revision">
+        <span>Orden de trabajo</span>
+        <strong>Revision inicial</strong>
+        <small>Scanner + checklist visual</small>
+      </div>
+      <div class="ap-safety-strip" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="section ap-services" id="servicios" aria-labelledby="services-title">
+    <div class="ap-section-head">
+      <div>
+        <div class="section-kicker">Servicios principales</div>
+        <h2 id="services-title">Mantencion, diagnostico y detalle con foco en cotizar</h2>
+      </div>
+      <p>
+        Fichas tecnicas pensadas para que el cliente entienda rapido que puede
+        pedir, que se revisa y por que conviene escribir antes de llevar el auto.
+      </p>
+    </div>
+
+    <div class="ap-service-rack">
+      {
+        services.map((service) => (
+          <article class="ap-service">
+            <div class="ap-service__number">{service.number}</div>
+            <div class="ap-service__copy">
+              <span>{service.tag}</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </div>
+            <div class="ap-service__media ap-image" data-fallback={`Reemplazar: ${service.asset.fileName}`}>
+              {
+                service.asset.exists && (
+                  <img
+                    src={service.asset.src}
+                    alt={service.alt}
+                    width="460"
+                    height="320"
+                    loading="lazy"
+                  />
+                )
+              }
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section ap-process" aria-labelledby="process-title">
+    <div class="ap-process__intro">
+      <div class="section-kicker">Proceso de trabajo</div>
+      <h2 id="process-title">Un flujo simple para evitar sorpresas</h2>
+      <p>
+        La landing no promete reparaciones magicas: muestra orden, aprobacion
+        previa y comunicacion clara durante el servicio.
+      </p>
+    </div>
+    <ol class="ap-process__rail">
+      {
+        processSteps.map((step, index) => (
+          <li>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="section ap-trust" aria-labelledby="trust-title">
+    <div class="ap-trust__panel">
+      <div>
+        <div class="section-kicker">Confianza operativa</div>
+        <h2 id="trust-title">Lo importante se informa antes de ejecutar</h2>
+        <p>
+          Una buena pagina de taller debe bajar la incertidumbre: que se hara,
+          cuanto cuesta, que repuesto se usa y cuando retirar el vehiculo.
+        </p>
+      </div>
+      <div class="ap-checklist" aria-label="Garantias y practicas de confianza">
+        {
+          trustItems.map((item) => (
+            <span>{item}</span>
+          ))
+        }
       </div>
     </div>
-    <div class="hero-panel" aria-label="Composición industrial de AutoPrime"></div>
   </section>
 
-  <section class="section" id="servicios">
-    <div class="section-kicker">Prestaciones</div>
-    <h2>Proceso técnico, tiempos claros y evidencia visual</h2>
-    <div class="service-grid">
-      <ServiceCard title="Mantención preventiva" meta="Taller" description="Aceite, filtros, inspección general y reporte de puntos críticos." />
-      <ServiceCard variant="featured" title="Diagnóstico scanner" meta="Técnico" description="Lectura de códigos, síntomas y recomendaciones priorizadas por urgencia." />
-      <ServiceCard title="Detailing exterior" meta="Detalle" description="Lavado técnico, descontaminado, corrección básica y protección de pintura." />
+  <section class="section ap-before-after" id="galeria" aria-labelledby="before-after-title">
+    <div class="ap-section-head">
+      <div>
+        <div class="section-kicker">Antes y despues</div>
+        <h2 id="before-after-title">Detailing visual para vender confianza</h2>
+      </div>
+      <p>
+        Composicion preparada para fotografias reales del proceso. Si aun no hay
+        material, el placeholder mantiene una presencia robusta y reemplazable.
+      </p>
+    </div>
+    <div class="ap-comparison">
+      <article>
+        <span>Antes</span>
+        <div class="ap-image" data-fallback={`Reemplazar: ${assets.beforeAfter.fileName}`}>
+          {
+            assets.beforeAfter.exists && (
+              <img
+                src={assets.beforeAfter.src}
+                alt="Antes del detailing automotriz con pintura y detalles por corregir"
+                width="720"
+                height="560"
+                loading="lazy"
+              />
+            )
+          }
+        </div>
+      </article>
+      <article>
+        <span>Despues</span>
+        <div class="ap-image" data-fallback={`Reemplazar: ${assets.detailing.fileName}`}>
+          {
+            assets.detailing.exists && (
+              <img
+                src={assets.detailing.src}
+                alt="Resultado despues de detailing exterior automotriz"
+                width="720"
+                height="560"
+                loading="lazy"
+              />
+            )
+          }
+        </div>
+      </article>
+      <div class="ap-comparison__note">
+        <strong>Registro opcional</strong>
+        <p>Fotos de avance, observaciones y recomendaciones al entregar el auto.</p>
+      </div>
     </div>
   </section>
 
-  <GallerySection
-    title="Trabajo y evidencia"
-    eyebrow="Taller"
-    layout="strip"
-    items={[
-      { title: 'Ingreso del vehículo', description: 'Registro inicial y checklist visible para el cliente.' },
-      { title: 'Diagnóstico técnico', description: 'Lectura y explicación simple de hallazgos.' },
-      { title: 'Entrega detallada', description: 'Antes/después y recomendaciones para próximos kilómetros.' },
-    ]}
-  />
+  <section class="ap-promo" aria-labelledby="promo-title">
+    <div>
+      <div class="section-kicker">Servicio destacado</div>
+      <h2 id="promo-title">Mantencion preventiva desde $49.990</h2>
+      <p>
+        Precio referencial de demo. Incluye pauta basica, cambio de aceite sujeto
+        a vehiculo e inspeccion visual de puntos criticos.
+      </p>
+    </div>
+    <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Cotizar mantencion</a>
+  </section>
 
-  <section class="section">
+  <section class="section ap-vehicles" aria-labelledby="vehicles-title">
+    <div class="ap-vehicles__visual ap-image" data-fallback={`Reemplazar: ${assets.workshop.fileName}`}>
+      {
+        assets.workshop.exists && (
+          <img
+            src={assets.workshop.src}
+            alt="Taller profesional limpio con zona de trabajo automotriz"
+            width="760"
+            height="640"
+            loading="lazy"
+          />
+        )
+      }
+    </div>
+    <div class="ap-vehicles__copy">
+      <div class="section-kicker">Vehiculos atendidos</div>
+      <h2 id="vehicles-title">Atencion para particulares y flotas pequenas</h2>
+      <p>
+        Sin afirmar certificaciones oficiales ficticias. La pagina comunica tipos
+        de vehiculos, alcance de revision y coordinacion de agenda.
+      </p>
+      <div class="ap-vehicle-tags">
+        {vehicleTypes.map((type) => <span>{type}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section ap-location" id="contacto" aria-labelledby="location-title">
+    <div class="ap-location__copy">
+      <div class="section-kicker">Agenda y ubicacion</div>
+      <h2 id="location-title">Cotiza antes de venir al taller</h2>
+      <p>
+        Av. Americo Vespucio 1845, Macul. Direccion ficticia para demo comercial.
+        Envia marca, modelo, ano, kilometraje y motivo de consulta.
+      </p>
+      <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Escribir por WhatsApp</a>
+    </div>
+    <div class="ap-location__cards">
+      <article>
+        <span>Horario</span>
+        <strong>Lun a vie · 09:00 a 19:00</strong>
+        <small>Sabado con agenda previa</small>
+      </article>
+      <article>
+        <span>Mensaje sugerido</span>
+        <p>Hola AutoPrime, quiero cotizar. Mi vehiculo es [marca/modelo/ano] y necesito revisar [motivo].</p>
+      </article>
+      <form class="ap-quote-form" aria-label="Formulario visual de cotizacion AutoPrime">
+        <label>
+          Vehiculo
+          <input type="text" name="vehicle" placeholder="Marca, modelo y ano" />
+        </label>
+        <label>
+          Servicio
+          <input type="text" name="service" placeholder="Ej: scanner, frenos, detailing" />
+        </label>
+        <label>
+          Telefono
+          <input type="tel" name="phone" placeholder="+56 9 1234 5678" />
+        </label>
+        <button class="button" type="button">Solicitar cotizacion</button>
+        <small>Formulario visual de demo. El contacto real se simula por WhatsApp.</small>
+      </form>
+    </div>
+  </section>
+
+  <section class="section ap-testimonials" aria-labelledby="testimonials-title">
+    <div class="ap-section-head">
+      <div>
+        <div class="section-kicker">Opiniones</div>
+        <h2 id="testimonials-title">Clientes que valoran claridad y puntualidad</h2>
+      </div>
+    </div>
     <div class="testimonial-grid">
-      <TestimonialCard quote="Me explicaron qué era urgente y qué podía esperar. Eso da confianza." author="Rodrigo H." detail="Mantención 80.000 km" />
-      <TestimonialCard quote="El detailing dejó el auto impecable y mandaron fotos del proceso." author="Valentina Q." detail="Detailing exterior" />
-      <TestimonialCard variant="statement" quote="Cotización clara, sin sorpresas al retirar." author="Mauricio D." detail="Diagnóstico scanner" />
+      <TestimonialCard variant="statement" quote="Me explicaron el diagnostico y aprobaron conmigo antes de cambiar piezas." author="Felipe M." detail="Scanner y mantencion" />
+      <TestimonialCard quote="Lleve la camioneta por ruido en frenos. Me mostraron el desgaste y la cotizacion fue clara." author="Carolina R." detail="Frenos delanteros" />
+      <TestimonialCard quote="El detailing quedo muy prolijo y enviaron fotos del proceso por WhatsApp." author="Nicolas A." detail="Detailing exterior" />
     </div>
   </section>
 
   <FAQ
     items={[
-      { question: '¿El formulario agenda una hora real?', answer: 'No por ahora. Es visual y luego puede conectarse a WhatsApp, correo o CRM.' },
-      { question: '¿Se pueden mostrar antes y después?', answer: 'Sí, esa es una sección natural para desarrollar en la landing completa.' },
+      { question: '¿Debo agendar antes de llevar el auto?', answer: 'Si. Lo ideal es escribir por WhatsApp con marca, modelo, ano, kilometraje y motivo de consulta para coordinar recepcion.' },
+      { question: '¿Hacen scanner?', answer: 'Si. La demo contempla diagnostico scanner con lectura de codigos y recomendaciones segun sintomas y revision inicial.' },
+      { question: '¿Entregan presupuesto antes de reparar?', answer: 'Si. La pagina comunica presupuesto claro y aprobacion del cliente antes de ejecutar trabajos adicionales.' },
+      { question: '¿Cuanto demora una mantencion?', answer: 'Depende del vehiculo y disponibilidad de insumos. Una mantencion simple puede coordinarse para el mismo dia, sujeto a agenda.' },
+      { question: '¿Atienden flotas pequenas?', answer: 'Si. Se puede coordinar mantencion preventiva para pocas unidades, con agenda y registro por vehiculo.' },
+      { question: '¿Hacen detailing?', answer: 'Si. Se puede cotizar detailing interior, exterior o combinado segun estado del vehiculo y resultado esperado.' },
     ]}
   />
 
-  <section class="contact-section">
-    <ContactForm variant="panel" title="Cotiza según tu vehículo" submitLabel="Enviar solicitud" />
+  <section class="ap-final-cta" aria-labelledby="final-title">
+    <div>
+      <div class="section-kicker">Cotizacion rapida</div>
+      <h2 id="final-title">Cotiza tu servicio automotriz</h2>
+      <p>
+        Una landing asi ayuda a un taller a mostrar orden, evidencia y contacto
+        directo sin implementar reservas ni backend.
+      </p>
+    </div>
+    <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
   </section>
 </DemoLayout>
