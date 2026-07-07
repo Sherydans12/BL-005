@@ -3,16 +3,18 @@ type Props = {
   title?: string;
   description?: string;
   submitLabel?: string;
+  variant?: 'default' | 'panel' | 'inline';
 };
 
 const {
   title = 'Conversemos',
   description = 'Déjanos tus datos y te contactamos durante el día hábil.',
   submitLabel = 'Enviar solicitud',
+  variant = 'default',
 } = Astro.props;
 ---
 
-<form class="contact-form" id="contacto" aria-label={title}>
+<form class={`contact-form contact-form--${variant}`} id="contacto" aria-label={title}>
   <div class="section-kicker">Contacto</div>
   <h2>{title}</h2>
   <p>{description}</p>

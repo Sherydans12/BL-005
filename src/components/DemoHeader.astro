@@ -10,6 +10,7 @@ type Props = {
   navItems?: NavItem[];
   ctaLabel?: string;
   ctaHref?: string;
+  variant?: 'default' | 'minimal' | 'solid';
 };
 
 const {
@@ -22,10 +23,11 @@ const {
   ],
   ctaLabel = 'Agendar',
   ctaHref = '#contacto',
+  variant = 'default',
 } = Astro.props;
 ---
 
-<header class="demo-header">
+<header class={`demo-header demo-header--${variant}`}>
   <a class="demo-header__brand" href="/demos" aria-label="Volver al índice de demos">
     <span class="demo-header__mark" aria-hidden="true">{businessName.slice(0, 1)}</span>
     <span>

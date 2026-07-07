@@ -12,6 +12,18 @@
   --display-weight: 800;
   --heading-weight: 800;
   --radius: 4px;
+  --card-radius: 2px;
+  --button-radius: 2px;
+  --button-bg: #0c0d0e;
+  --button-color: #f7f7f2;
+  --button-border: #0c0d0e;
+  --button-shadow: 8px 8px 0 #a7f51d;
+  --card-shadow: none;
+  --input-bg: #ffffff;
+  --gallery-media-bg:
+    linear-gradient(90deg, rgba(167, 245, 29, 0.9) 0 14%, transparent 14%),
+    linear-gradient(135deg, #0c0d0e, #6d7174);
+  --whatsapp-bg: #0c0d0e;
 }
 
 .theme-novawear .demo-hero {

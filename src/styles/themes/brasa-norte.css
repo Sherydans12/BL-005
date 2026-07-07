@@ -12,6 +12,17 @@
   --display-weight: 700;
   --heading-weight: 680;
   --radius: 6px;
+  --card-radius: 6px;
+  --button-radius: 999px;
+  --button-bg: #7f3f2b;
+  --button-color: #fff6e8;
+  --button-shadow: 0 12px 28px rgba(87, 42, 26, 0.22);
+  --card-shadow: 0 18px 45px rgba(73, 41, 24, 0.1);
+  --input-bg: #fffaf0;
+  --gallery-media-bg:
+    linear-gradient(135deg, rgba(127, 63, 43, 0.86), rgba(83, 98, 61, 0.55)),
+    #ead3b8;
+  --whatsapp-bg: #53623d;
 }
 
 .theme-brasa-norte .demo-hero {

@@ -18,8 +18,15 @@ const demo = getDemoBySlug('kineactiva')!;
   category={demo.category}
   theme={demo.slug}
   ctaLabel="Evaluar caso"
+  headerVariant="solid"
 >
-  <!-- TODO KineActiva: desarrollar credenciales, patologías tratadas, proceso clínico y derivaciones. -->
+  <!--
+    TODO KineActiva:
+    Identidad: clínica, confiable y clara, con azul petróleo, celeste, blanco y verde salud.
+    Desarrollar: credenciales, patologías, proceso de evaluación, planes de tratamiento y derivaciones.
+    No tocar: rutas, DemoLayout, themes de otras demos ni contenido de otras landings.
+    Este chat especializado debe trabajar solo src/pages/demos/kineactiva.astro y su theme.
+  -->
   <section class="demo-hero">
     <div class="hero-copy">
       <div class="section-kicker">Rehabilitación · Dolor · Movimiento</div>
@@ -43,7 +50,7 @@ const demo = getDemoBySlug('kineactiva')!;
     <div class="section-kicker">Tratamientos</div>
     <h2>Atención ordenada, medible y cercana</h2>
     <div class="service-grid">
-      <ServiceCard title="Dolor lumbar y cervical" meta="Columna" description="Evaluación de movilidad, educación del dolor y ejercicios progresivos." />
+      <ServiceCard variant="featured" title="Dolor lumbar y cervical" meta="Columna" description="Evaluación de movilidad, educación del dolor y ejercicios progresivos." />
       <ServiceCard title="Lesiones deportivas" meta="Retorno" description="Plan de fuerza, control de carga y vuelta gradual al entrenamiento." />
       <ServiceCard title="Rehabilitación postoperatoria" meta="Recuperación" description="Objetivos por etapa, control de síntomas y coordinación con indicaciones médicas." />
     </div>
@@ -52,6 +59,7 @@ const demo = getDemoBySlug('kineactiva')!;
   <GallerySection
     title="Proceso de atención"
     eyebrow="Método"
+    layout="grid"
     items={[
       { title: 'Evaluación funcional', description: 'Se revisa movimiento, dolor, objetivos y contexto diario.' },
       { title: 'Plan de ejercicios', description: 'Indicaciones simples para avanzar también fuera de consulta.' },

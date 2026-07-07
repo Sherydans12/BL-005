@@ -18,8 +18,15 @@ const demo = getDemoBySlug('glow-studio')!;
   category={demo.category}
   theme={demo.slug}
   ctaLabel="Agendar hora"
+  headerVariant="minimal"
 >
-  <!-- TODO Glow Studio: desarrollar servicios premium, agenda online simulada, equipo y tratamientos destacados. -->
+  <!--
+    TODO Glow Studio:
+    Identidad: premium, elegante, silenciosa, con champagne, nude, negro suave y blanco cálido.
+    Desarrollar: tratamientos signature, agenda visual, equipo, packs, ritual de servicio y prueba social.
+    No tocar: rutas, DemoLayout, themes de otras demos ni contenido de otras landings.
+    Este chat especializado debe trabajar solo src/pages/demos/glow-studio.astro y su theme.
+  -->
   <section class="demo-hero">
     <div class="hero-copy">
       <div class="section-kicker">Beauty bar · Barbería · Skin</div>
@@ -41,7 +48,7 @@ const demo = getDemoBySlug('glow-studio')!;
     <h2>Una experiencia pulida desde la llegada</h2>
     <div class="service-grid">
       <ServiceCard title="Corte y styling" meta="Barbería" description="Corte asesorado, lavado y terminación con productos profesionales." />
-      <ServiceCard title="Glow facial express" meta="Skin" description="Limpieza, hidratación y acabado luminoso para eventos o rutina mensual." />
+      <ServiceCard variant="featured" title="Glow facial express" meta="Skin" description="Limpieza, hidratación y acabado luminoso para eventos o rutina mensual." />
       <ServiceCard title="Perfilado premium" meta="Detalles" description="Cejas, barba y terminaciones para mantener una imagen consistente." />
     </div>
   </section>
@@ -49,6 +56,7 @@ const demo = getDemoBySlug('glow-studio')!;
   <GallerySection
     title="Detalles del estudio"
     eyebrow="Look & feel"
+    layout="strip"
     items={[
       { title: 'Cabina limpia', description: 'Espacios privados para tratamientos faciales.' },
       { title: 'Terminación barber', description: 'Servicios pensados para agenda rápida.' },
@@ -60,7 +68,7 @@ const demo = getDemoBySlug('glow-studio')!;
     <div class="testimonial-grid">
       <TestimonialCard quote="Me atendieron puntual y salí lista para una reunión. Muy fino todo." author="Camila V." detail="Tratamiento facial" />
       <TestimonialCard quote="El corte quedó exacto a lo que pedí, con una asesoría súper clara." author="Matías A." detail="Barbería" />
-      <TestimonialCard quote="La experiencia se siente más boutique que peluquería tradicional." author="Josefina L." detail="Clienta mensual" />
+      <TestimonialCard variant="statement" quote="La experiencia se siente más boutique que peluquería tradicional." author="Josefina L." detail="Clienta mensual" />
     </div>
   </section>
 

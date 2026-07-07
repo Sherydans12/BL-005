@@ -11,6 +11,17 @@
   --display-weight: 780;
   --heading-weight: 760;
   --radius: 8px;
+  --card-radius: 8px;
+  --button-radius: 8px;
+  --button-bg: #0f4c5c;
+  --button-color: #ffffff;
+  --button-shadow: 0 14px 32px rgba(15, 76, 92, 0.18);
+  --card-shadow: 0 12px 34px rgba(15, 76, 92, 0.08);
+  --input-bg: #f7fcfd;
+  --gallery-media-bg:
+    linear-gradient(135deg, rgba(15, 76, 92, 0.9), rgba(66, 168, 125, 0.65)),
+    #e1f3f6;
+  --whatsapp-bg: #42a87d;
 }
 
 .theme-kineactiva .demo-hero {

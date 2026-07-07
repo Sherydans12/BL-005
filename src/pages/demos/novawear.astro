@@ -18,8 +18,15 @@ const demo = getDemoBySlug('novawear')!;
   category={demo.category}
   theme={demo.slug}
   ctaLabel="Ver catálogo"
+  headerVariant="minimal"
 >
-  <!-- TODO NovaWear: desarrollar catálogo, drops, guía de tallas, filtros visuales y productos reales. -->
+  <!--
+    TODO NovaWear:
+    Identidad: urbana, editorial y directa, con negro, blanco, gris y acento verde lima o azul eléctrico.
+    Desarrollar: catálogo visual, drops, guía de tallas, disponibilidad, looks y pedidos por WhatsApp.
+    No tocar: rutas, DemoLayout, themes de otras demos ni contenido de otras landings.
+    Este chat especializado debe trabajar solo src/pages/demos/novawear.astro y su theme.
+  -->
   <section class="demo-hero">
     <div class="hero-copy">
       <div class="section-kicker">Streetwear · Drops · Catálogo</div>
@@ -41,7 +48,7 @@ const demo = getDemoBySlug('novawear')!;
     <h2>Catálogo corto, visual y directo al pedido</h2>
     <div class="service-grid">
       <ServiceCard title="Hoodies boxy" meta="Drop" description="Fit amplio, algodón pesado y colores neutros para rotación diaria." />
-      <ServiceCard title="Poleras gráficas" meta="Graphic" description="Diseños limitados con tallas S a XL y reposición según demanda." />
+      <ServiceCard variant="featured" title="Poleras gráficas" meta="Graphic" description="Diseños limitados con tallas S a XL y reposición según demanda." />
       <ServiceCard title="Accesorios" meta="Add-on" description="Jockeys, totes y piezas pequeñas para aumentar ticket promedio." />
     </div>
   </section>
@@ -49,6 +56,7 @@ const demo = getDemoBySlug('novawear')!;
   <GallerySection
     title="Editorial de colección"
     eyebrow="Lookbook"
+    layout="feature"
     items={[
       { title: 'Fit urbano', description: 'Siluetas amplias y neutros fáciles de combinar.' },
       { title: 'Pieza destacada', description: 'Un producto héroe por drop para enfocar conversión.' },
@@ -72,6 +80,6 @@ const demo = getDemoBySlug('novawear')!;
   />
 
   <section class="contact-section">
-    <ContactForm title="Consulta talla o disponibilidad" submitLabel="Consultar stock" />
+    <ContactForm variant="inline" title="Consulta talla o disponibilidad" submitLabel="Consultar stock" />
   </section>
 </DemoLayout>

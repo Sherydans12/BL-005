@@ -19,7 +19,13 @@ const demo = getDemoBySlug('brasa-norte')!;
   theme={demo.slug}
   ctaLabel="Reservar mesa"
 >
-  <!-- TODO Brasa Norte: desarrollar carta, fotos reales de platos, reservas y relato de cocina artesanal. -->
+  <!--
+    TODO Brasa Norte:
+    Identidad: cálida, artesanal, de barrio, con terracota, crema, café oscuro y verde oliva.
+    Desarrollar: carta destacada, historia de cocina, fotos de platos, reservas, horarios y mapa/local.
+    No tocar: rutas, DemoLayout, themes de otras demos ni contenido de otras landings.
+    Este chat especializado debe trabajar solo src/pages/demos/brasa-norte.astro y su theme.
+  -->
   <section class="demo-hero">
     <div class="hero-copy">
       <div class="section-kicker">Café de barrio · Cocina a fuego lento</div>
@@ -41,7 +47,7 @@ const demo = getDemoBySlug('brasa-norte')!;
     <h2>Una carta simple, honesta y de temporada</h2>
     <div class="service-grid">
       <ServiceCard title="Desayunos con masa madre" meta="Mañana" description="Panadería artesanal, huevos de campo, palta y café recién molido." />
-      <ServiceCard title="Almuerzos de estación" meta="Mediodía" description="Platos caseros con carnes, vegetales asados y opciones vegetarianas." />
+      <ServiceCard variant="featured" title="Almuerzos de estación" meta="Mediodía" description="Platos caseros con carnes, vegetales asados y opciones vegetarianas." />
       <ServiceCard title="Café y dulcería" meta="Tarde" description="Tostados, filtrados, tortas de la casa y opciones para llevar." />
     </div>
   </section>
@@ -49,6 +55,7 @@ const demo = getDemoBySlug('brasa-norte')!;
   <GallerySection
     title="Rincones y preparaciones"
     eyebrow="Ambiente"
+    layout="feature"
     items={[
       { title: 'Barra de café', description: 'Un punto cálido para pedidos rápidos y conversación.' },
       { title: 'Mesa familiar', description: 'Reservas para grupos pequeños durante la semana.' },
@@ -72,6 +79,6 @@ const demo = getDemoBySlug('brasa-norte')!;
   />
 
   <section class="contact-section">
-    <ContactForm title="Reserva o consulta disponibilidad" submitLabel="Solicitar reserva" />
+    <ContactForm variant="panel" title="Reserva o consulta disponibilidad" submitLabel="Solicitar reserva" />
   </section>
 </DemoLayout>

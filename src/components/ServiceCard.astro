@@ -3,12 +3,13 @@ type Props = {
   title: string;
   description: string;
   meta?: string;
+  variant?: 'default' | 'featured' | 'quiet';
 };
 
-const { title, description, meta } = Astro.props;
+const { title, description, meta, variant = 'default' } = Astro.props;
 ---
 
-<article class="service-card">
+<article class={`service-card service-card--${variant}`}>
   {meta && <span>{meta}</span>}
   <h3>{title}</h3>
   <p>{description}</p>

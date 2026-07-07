@@ -8,16 +8,18 @@ type Props = {
   title?: string;
   eyebrow?: string;
   items: GalleryItem[];
+  layout?: 'grid' | 'feature' | 'strip';
 };
 
 const {
   title = 'Galería',
   eyebrow = 'Vista preliminar',
   items,
+  layout = 'grid',
 } = Astro.props;
 ---
 
-<section class="gallery-section" id="galeria" aria-labelledby="gallery-title">
+<section class={`gallery-section gallery-section--${layout}`} id="galeria" aria-labelledby="gallery-title">
   <div class="section-kicker">{eyebrow}</div>
   <h2 id="gallery-title">{title}</h2>
   <div class="gallery-grid">

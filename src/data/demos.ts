@@ -15,6 +15,8 @@ export type DemoMeta = {
   seoDescription: string;
   tone: string;
   accent: string;
+  clientPitch: string;
+  conversionGoal: string;
 };
 
 export const demos: DemoMeta[] = [
@@ -30,6 +32,8 @@ export const demos: DemoMeta[] = [
       'Landing demo para restaurante y cafetería artesanal, con foco en reservas, menú y cercanía.',
     tone: 'Cálido, artesanal y cercano',
     accent: 'Terracota, crema, café oscuro y verde oliva',
+    clientPitch: 'Ideal para locales que venden experiencia, ambiente y reserva.',
+    conversionGoal: 'Reservas y consultas por WhatsApp',
   },
   {
     slug: 'glow-studio',
@@ -43,6 +47,8 @@ export const demos: DemoMeta[] = [
       'Landing demo para estudio de estética y barbería premium, con servicios, agenda y prueba social.',
     tone: 'Elegante, premium y minimal',
     accent: 'Champagne, nude, negro suave y blanco cálido',
+    clientPitch: 'Pensada para servicios donde confianza, agenda y detalle elevan el ticket.',
+    conversionGoal: 'Agendamiento de horas',
   },
   {
     slug: 'kineactiva',
@@ -56,6 +62,8 @@ export const demos: DemoMeta[] = [
       'Landing demo para consulta de kinesiología, con foco en confianza, tratamientos y agenda.',
     tone: 'Clínico, claro y confiable',
     accent: 'Azul petróleo, celeste, blanco y verde salud',
+    clientPitch: 'Para profesionales que necesitan explicar su método y generar seguridad.',
+    conversionGoal: 'Evaluaciones particulares',
   },
   {
     slug: 'novawear',
@@ -69,6 +77,8 @@ export const demos: DemoMeta[] = [
       'Landing demo para marca de ropa y catálogo urbano, con colecciones, productos y contacto rápido.',
     tone: 'Urbano, editorial y directo',
     accent: 'Negro, blanco, gris y acento lima',
+    clientPitch: 'Una vitrina rápida para marcas que venden por catálogo o drops.',
+    conversionGoal: 'Pedidos y consulta de stock',
   },
   {
     slug: 'autoprime',
@@ -82,6 +92,8 @@ export const demos: DemoMeta[] = [
       'Landing demo para taller mecánico y detailing, orientada a confianza técnica y cotizaciones.',
     tone: 'Industrial, técnico y preciso',
     accent: 'Grafito, negro, amarillo seguridad y acero',
+    clientPitch: 'Para servicios técnicos que necesitan transmitir orden y evidencia.',
+    conversionGoal: 'Cotizaciones de servicio',
   },
 ];
 

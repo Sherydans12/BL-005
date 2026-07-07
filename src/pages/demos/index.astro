@@ -16,17 +16,51 @@ import '@styles/global.css';
     />
   </head>
   <body class="demo-index">
+    <header class="demo-index__nav">
+      <a class="demo-index__brand" href="/demos" aria-label="BaseLogic demos">
+        <span aria-hidden="true">BL</span>
+        BaseLogic
+      </a>
+      <a class="button button--small" href="#cotizar">Quiero una página similar</a>
+    </header>
+
     <main>
       <section class="demo-index__hero">
-        <div class="section-kicker">BaseLogic demos</div>
-        <h1>Landings para comercios reales</h1>
+        <div>
+          <div class="section-kicker">Landings demo para comercios</div>
+          <h1>Sitios que se adaptan al negocio, no al revés</h1>
+          <p>
+            Este paquete muestra cómo una landing puede vender distinto según el rubro:
+            un restaurante necesita apetito y reserva, una consulta necesita confianza,
+            una tienda necesita catálogo y un taller necesita precisión.
+          </p>
+          <div class="demo-index__actions">
+            <a class="button" href="#demos">Ver las demos</a>
+            <a class="button button--ghost" href="#cotizar">Quiero una página similar</a>
+          </div>
+        </div>
+
+        <aside class="demo-index__panel" aria-label="Resumen del paquete de demos">
+          <strong>5 rutas, 5 identidades, 1 sistema base</strong>
+          <ul>
+            <li>Diseño responsive desde el inicio.</li>
+            <li>SEO básico y CTA visible por demo.</li>
+            <li>WhatsApp con número placeholder listo para reemplazar.</li>
+            <li>Themes separados para evitar landings repetidas.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="demo-index__intro" id="demos">
+        <div class="section-kicker">Vitrina comercial</div>
+        <h2>Ejemplos para explicar valor en una reunión</h2>
         <p>
-          Cinco direcciones visuales para mostrar cómo BaseLogic puede adaptar una
-          landing a distintos rubros, tonos comerciales y objetivos de conversión.
+          Cada card abre una demo preliminar. La base técnica es compartida, pero la
+          dirección visual, el tono y la composición están pensados para crecer por separado.
         </p>
       </section>
 
-      <section class="demo-index__grid" aria-label="Listado de demos">
+      <section class="demo-index__grid" aria-label="Listado de demos BaseLogic">
         {
           demos.map((demo) => (
             <a class={`demo-card demo-card--${demo.slug}`} href={demo.href}>
@@ -34,12 +68,32 @@ import '@styles/global.css';
               <span class="section-kicker">{demo.category}</span>
               <h2>{demo.name}</h2>
               <p>{demo.shortDescription}</p>
-              <p>{demo.tone}</p>
+              <p>{demo.clientPitch}</p>
+              <div class="demo-card__meta">
+                <p><strong>Objetivo:</strong> {demo.conversionGoal}</p>
+                <p><strong>Dirección:</strong> {demo.tone}</p>
+              </div>
               <small>Ver demo</small>
             </a>
           ))
         }
       </section>
+
+      <section class="demo-index__cta" id="cotizar">
+        <div class="section-kicker">BaseLogic</div>
+        <h2>¿Quieres una landing con esta lógica para tu negocio?</h2>
+        <p>
+          Podemos partir desde una demo como referencia y adaptarla a tu rubro, fotos,
+          servicios, tono de marca y objetivo comercial principal.
+        </p>
+        <a class="button" href="https://wa.me/56912345678?text=Hola%2C%20quiero%20una%20pagina%20similar%20para%20mi%20negocio." target="_blank" rel="noreferrer">
+          Quiero una página similar
+        </a>
+      </section>
     </main>
+
+    <footer class="demo-index__footer">
+      <small>Paquete demo BaseLogic. Las marcas y textos son ficticios para presentación comercial.</small>
+    </footer>
   </body>
 </html>

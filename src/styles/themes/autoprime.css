@@ -11,6 +11,17 @@
   --display-weight: 850;
   --heading-weight: 820;
   --radius: 3px;
+  --card-radius: 3px;
+  --button-radius: 3px;
+  --button-bg: #ffbf1f;
+  --button-color: #15191c;
+  --button-border: #ffbf1f;
+  --button-shadow: 0 0 0 3px rgba(255, 191, 31, 0.12);
+  --card-shadow: 0 16px 44px rgba(0, 0, 0, 0.22);
+  --input-bg: #171c1f;
+  --gallery-media-bg:
+    repeating-linear-gradient(-45deg, #ffbf1f 0 0.8rem, #ffbf1f 0.8rem 1.6rem, #20262a 1.6rem 2.4rem, #20262a 2.4rem 3.2rem);
+  --whatsapp-bg: #ff7a1a;
 }
 
 .theme-autoprime .demo-header__mark {

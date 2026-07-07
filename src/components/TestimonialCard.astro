@@ -3,12 +3,13 @@ type Props = {
   quote: string;
   author: string;
   detail?: string;
+  variant?: 'default' | 'compact' | 'statement';
 };
 
-const { quote, author, detail } = Astro.props;
+const { quote, author, detail, variant = 'default' } = Astro.props;
 ---
 
-<article class="testimonial-card">
+<article class={`testimonial-card testimonial-card--${variant}`}>
   <p>“{quote}”</p>
   <footer>
     <strong>{author}</strong>

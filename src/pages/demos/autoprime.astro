@@ -18,8 +18,15 @@ const demo = getDemoBySlug('autoprime')!;
   category={demo.category}
   theme={demo.slug}
   ctaLabel="Cotizar"
+  headerVariant="solid"
 >
-  <!-- TODO AutoPrime: desarrollar paquetes de mantención, diagnóstico, detailing, garantías y antes/después. -->
+  <!--
+    TODO AutoPrime:
+    Identidad: industrial, técnica y precisa, con grafito, negro, amarillo seguridad y naranjo/acero.
+    Desarrollar: paquetes de mantención, diagnóstico, detailing, garantías, antes/después y checklist técnico.
+    No tocar: rutas, DemoLayout, themes de otras demos ni contenido de otras landings.
+    Este chat especializado debe trabajar solo src/pages/demos/autoprime.astro y su theme.
+  -->
   <section class="demo-hero">
     <div class="hero-copy">
       <div class="section-kicker">Diagnóstico · Mantención · Detailing</div>
@@ -41,7 +48,7 @@ const demo = getDemoBySlug('autoprime')!;
     <h2>Proceso técnico, tiempos claros y evidencia visual</h2>
     <div class="service-grid">
       <ServiceCard title="Mantención preventiva" meta="Taller" description="Aceite, filtros, inspección general y reporte de puntos críticos." />
-      <ServiceCard title="Diagnóstico scanner" meta="Técnico" description="Lectura de códigos, síntomas y recomendaciones priorizadas por urgencia." />
+      <ServiceCard variant="featured" title="Diagnóstico scanner" meta="Técnico" description="Lectura de códigos, síntomas y recomendaciones priorizadas por urgencia." />
       <ServiceCard title="Detailing exterior" meta="Detalle" description="Lavado técnico, descontaminado, corrección básica y protección de pintura." />
     </div>
   </section>
@@ -49,6 +56,7 @@ const demo = getDemoBySlug('autoprime')!;
   <GallerySection
     title="Trabajo y evidencia"
     eyebrow="Taller"
+    layout="strip"
     items={[
       { title: 'Ingreso del vehículo', description: 'Registro inicial y checklist visible para el cliente.' },
       { title: 'Diagnóstico técnico', description: 'Lectura y explicación simple de hallazgos.' },
@@ -60,7 +68,7 @@ const demo = getDemoBySlug('autoprime')!;
     <div class="testimonial-grid">
       <TestimonialCard quote="Me explicaron qué era urgente y qué podía esperar. Eso da confianza." author="Rodrigo H." detail="Mantención 80.000 km" />
       <TestimonialCard quote="El detailing dejó el auto impecable y mandaron fotos del proceso." author="Valentina Q." detail="Detailing exterior" />
-      <TestimonialCard quote="Cotización clara, sin sorpresas al retirar." author="Mauricio D." detail="Diagnóstico scanner" />
+      <TestimonialCard variant="statement" quote="Cotización clara, sin sorpresas al retirar." author="Mauricio D." detail="Diagnóstico scanner" />
     </div>
   </section>
 
@@ -72,6 +80,6 @@ const demo = getDemoBySlug('autoprime')!;
   />
 
   <section class="contact-section">
-    <ContactForm title="Cotiza según tu vehículo" submitLabel="Enviar solicitud" />
+    <ContactForm variant="panel" title="Cotiza según tu vehículo" submitLabel="Enviar solicitud" />
   </section>
 </DemoLayout>
