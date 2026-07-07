@@ -1,14 +1,89 @@
 ---
 import ContactForm from '@components/ContactForm.astro';
 import FAQ from '@components/FAQ.astro';
-import GallerySection from '@components/GallerySection.astro';
-import ServiceCard from '@components/ServiceCard.astro';
 import TestimonialCard from '@components/TestimonialCard.astro';
 import DemoLayout from '@layouts/DemoLayout.astro';
 import { getDemoBySlug } from '@data/demos';
 import '@styles/themes/brasa-norte.css';
 
 const demo = getDemoBySlug('brasa-norte')!;
+const whatsappHref = 'https://wa.me/56912345678?text=Hola%2C%20quiero%20reservar%20en%20Brasa%20Norte.';
+const assetBase = '/assets/demos/brasa-norte';
+
+const specialties = [
+  {
+    title: 'Carnes a la brasa',
+    meta: 'Fuego lento',
+    description: 'Cortes jugosos, papas rústicas y pebre de la casa servido al centro.',
+    image: `${assetBase}/parrilla-brasa.webp`,
+    alt: 'Cortes de carne dorándose sobre una parrilla a la brasa',
+    placeholder: 'Foto sugerida: parrilla-brasa.webp',
+  },
+  {
+    title: 'Cafés de especialidad',
+    meta: 'Barra',
+    description: 'Espresso, filtrados y latte de temporada para quedarse o pedir al paso.',
+    image: `${assetBase}/cafe-especialidad.webp`,
+    alt: 'Café de especialidad servido en taza sobre una barra cálida',
+    placeholder: 'Foto sugerida: cafe-especialidad.webp',
+  },
+  {
+    title: 'Menú ejecutivo',
+    meta: 'Lun a vie',
+    description: 'Plato del día, ensalada fresca y bebestible para almorzar rico sin demora.',
+    image: `${assetBase}/menu-ejecutivo.webp`,
+    alt: 'Menú ejecutivo de restaurante con plato de fondo y ensalada',
+    placeholder: 'Foto sugerida: menu-ejecutivo.webp',
+  },
+  {
+    title: 'Postres caseros',
+    meta: 'Dulcería',
+    description: 'Torta de hojarasca, kuchen tibio y preparaciones que cambian cada semana.',
+    image: `${assetBase}/postre-casero.webp`,
+    alt: 'Postre casero servido en plato de cafetería',
+    placeholder: 'Foto sugerida: postre-casero.webp',
+  },
+];
+
+const menuItems = [
+  { name: 'Plateada a la brasa', detail: 'Puré rústico, jugo reducido y ensalada chilena', price: '$12.990' },
+  { name: 'Sándwich norteño', detail: 'Pan amasado, mechada, queso mantecoso y ají verde suave', price: '$8.490' },
+  { name: 'Bowl de verduras asadas', detail: 'Quínoa, zapallo, garbanzos crocantes y salsa de yogur', price: '$7.990' },
+  { name: 'Latte canela + kuchen', detail: 'Café de la casa y porción de kuchen tibio', price: '$5.490' },
+];
+
+const galleryItems = [
+  {
+    title: 'Parrilla abierta',
+    image: `${assetBase}/parrilla-brasa.webp`,
+    alt: 'Parrilla abierta con brasas y preparación de carnes',
+    placeholder: 'Reemplazar con parrilla-brasa.webp',
+  },
+  {
+    title: 'Barra de café',
+    image: `${assetBase}/cafe-especialidad.webp`,
+    alt: 'Barra de café con taza preparada y luz cálida',
+    placeholder: 'Reemplazar con cafe-especialidad.webp',
+  },
+  {
+    title: 'Mesa junto a la ventana',
+    image: `${assetBase}/ambiente-local.webp`,
+    alt: 'Mesa de restaurante junto a una ventana en un ambiente acogedor',
+    placeholder: 'Reemplazar con ambiente-local.webp',
+  },
+  {
+    title: 'Postres de vitrina',
+    image: `${assetBase}/postre-casero.webp`,
+    alt: 'Postres caseros en vitrina de cafetería',
+    placeholder: 'Reemplazar con postre-casero.webp',
+  },
+  {
+    title: 'Almuerzo de temporada',
+    image: `${assetBase}/menu-ejecutivo.webp`,
+    alt: 'Almuerzo de temporada servido en mesa de restaurante',
+    placeholder: 'Reemplazar con menu-ejecutivo.webp',
+  },
+];
 ---
 
 <DemoLayout
@@ -17,68 +92,252 @@ const demo = getDemoBySlug('brasa-norte')!;
   businessName={demo.name}
   category={demo.category}
   theme={demo.slug}
-  ctaLabel="Reservar mesa"
+  ctaLabel="Reservar"
+  whatsappMessage="Hola, quiero reservar una mesa en Brasa Norte."
 >
-  <!--
-    TODO Brasa Norte:
-    Identidad: cálida, artesanal, de barrio, con terracota, crema, café oscuro y verde oliva.
-    Desarrollar: carta destacada, historia de cocina, fotos de platos, reservas, horarios y mapa/local.
-    No tocar: rutas, DemoLayout, themes de otras demos ni contenido de otras landings.
-    Este chat especializado debe trabajar solo src/pages/demos/brasa-norte.astro y su theme.
-  -->
   <section class="demo-hero">
     <div class="hero-copy">
-      <div class="section-kicker">Café de barrio · Cocina a fuego lento</div>
-      <h1>Sabores del norte, pausa de todos los días</h1>
+      <div class="section-kicker">Cocina a la brasa · Café de barrio</div>
+      <h1>Mesa lista, fuego prendido y café recién molido</h1>
       <p>
-        Desayunos, almuerzos y café de especialidad en un espacio cálido para
-        venir sin apuro. Reserva tu mesa o revisa las preparaciones de temporada.
+        Brasa Norte es ese local cálido para almorzar bien, reunirse sin apuro
+        o pasar por un café con algo dulce. Cocina artesanal, sabores de
+        temporada y atención cercana en pleno barrio.
       </p>
       <div class="hero-actions">
-        <a class="button" href="#contacto">Reservar mesa</a>
-        <a class="button button--ghost" href="#servicios">Ver carta breve</a>
+        <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Reservar por WhatsApp</a>
+        <a class="button button--ghost" href="#carta">Ver carta</a>
+      </div>
+      <dl class="hero-facts" aria-label="Datos destacados de Brasa Norte">
+        <div>
+          <dt>Abierto hoy</dt>
+          <dd>09:00 a 22:30</dd>
+        </div>
+        <div>
+          <dt>Calificación</dt>
+          <dd>4,8 de 5</dd>
+        </div>
+        <div>
+          <dt>Especialidad</dt>
+          <dd>Brasa y café</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="hero-panel">
+      <!-- Reemplazar public/assets/demos/brasa-norte/hero-plato-principal.webp por foto real o generada del plato principal. -->
+      <div class="image-frame image-frame--hero" data-fallback="Foto sugerida: hero-plato-principal.webp">
+        <img
+          src={`${assetBase}/hero-plato-principal.webp`}
+          alt="Plato principal de Brasa Norte servido sobre mesa cálida"
+          width="760"
+          height="980"
+          fetchpriority="high"
+          onerror="this.remove()"
+        />
+      </div>
+      <div class="hero-note">
+        <span>Recomendado</span>
+        <strong>Plateada a la brasa</strong>
+        <small>Con puré rústico y pebre fresco</small>
       </div>
     </div>
-    <div class="hero-panel" aria-label="Composición visual cálida de Brasa Norte"></div>
   </section>
 
   <section class="section" id="servicios">
-    <div class="section-kicker">Especialidades</div>
-    <h2>Una carta simple, honesta y de temporada</h2>
-    <div class="service-grid">
-      <ServiceCard title="Desayunos con masa madre" meta="Mañana" description="Panadería artesanal, huevos de campo, palta y café recién molido." />
-      <ServiceCard variant="featured" title="Almuerzos de estación" meta="Mediodía" description="Platos caseros con carnes, vegetales asados y opciones vegetarianas." />
-      <ServiceCard title="Café y dulcería" meta="Tarde" description="Tostados, filtrados, tortas de la casa y opciones para llevar." />
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">Especialidades</div>
+        <h2>Lo que sale de la cocina</h2>
+      </div>
+      <p>
+        Una carta corta para elegir fácil: platos contundentes, café bien hecho
+        y dulces de vitrina preparados en casa.
+      </p>
+    </div>
+    <div class="specialty-grid">
+      {
+        specialties.map((item) => (
+          <article class="specialty-card">
+            <div class="specialty-card__media image-frame" data-fallback={item.placeholder}>
+              <img
+                src={item.image}
+                alt={item.alt}
+                width="520"
+                height="390"
+                loading="lazy"
+                onerror="this.remove()"
+              />
+            </div>
+            <div class="specialty-card__copy">
+              <span>{item.meta}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </section>
 
-  <GallerySection
-    title="Rincones y preparaciones"
-    eyebrow="Ambiente"
-    layout="feature"
-    items={[
-      { title: 'Barra de café', description: 'Un punto cálido para pedidos rápidos y conversación.' },
-      { title: 'Mesa familiar', description: 'Reservas para grupos pequeños durante la semana.' },
-      { title: 'Platos de temporada', description: 'Preparaciones que cambian según productos disponibles.' },
-    ]}
-  />
+  <section class="section menu-section" id="carta">
+    <div class="menu-board">
+      <div class="menu-board__intro">
+        <div class="section-kicker">Carta breve</div>
+        <h2>Favoritos de la casa</h2>
+        <p>
+          Valores ficticios para esta demo. La idea es mostrar una carta clara,
+          apetecible y fácil de consultar antes de reservar o pedir para retirar.
+        </p>
+      </div>
+      <div class="menu-board__items" aria-label="Menú destacado de Brasa Norte">
+        {
+          menuItems.map((item) => (
+            <article class="menu-row">
+              <div>
+                <h3>{item.name}</h3>
+                <p>{item.detail}</p>
+              </div>
+              <strong>{item.price}</strong>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section daily-section">
+    <div class="daily-card">
+      <!-- Reemplazar public/assets/demos/brasa-norte/menu-ejecutivo.webp por foto real del menú del día. -->
+      <div class="daily-card__media image-frame" data-fallback="Foto sugerida: menu-ejecutivo.webp">
+        <img
+          src={`${assetBase}/menu-ejecutivo.webp`}
+          alt="Menú ejecutivo de Brasa Norte servido para almuerzo"
+          width="620"
+          height="460"
+          loading="lazy"
+          onerror="this.remove()"
+        />
+      </div>
+      <div class="daily-card__copy">
+        <div class="section-kicker">Recomendación del día</div>
+        <h2>Menú almuerzo desde $8.990</h2>
+        <p>
+          Incluye plato de fondo, ensalada y bebestible. Cambia según mercado y
+          se puede consultar cada mañana por WhatsApp.
+        </p>
+      </div>
+      <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Consultar disponibilidad</a>
+    </div>
+  </section>
+
+  <section class="gallery-section brasa-gallery" id="galeria" aria-labelledby="gallery-title">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">Ambiente y platos</div>
+        <h2 id="gallery-title">Un local para quedarse un rato</h2>
+      </div>
+      <p>
+        Bloques visuales de referencia para mostrar comida, barra, mesas y
+        detalles del espacio sin depender de fotografías reales.
+      </p>
+    </div>
+    <div class="brasa-gallery__grid">
+      {
+        galleryItems.map((item, index) => (
+          <article class={`brasa-photo brasa-photo--${index + 1}`}>
+            <div class="brasa-photo__media image-frame" data-fallback={item.placeholder}>
+              <img
+                src={item.image}
+                alt={item.alt}
+                width={index === 0 ? '760' : '520'}
+                height={index === 0 ? '920' : '520'}
+                loading="lazy"
+                onerror="this.remove()"
+              />
+            </div>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <h3>{item.title}</h3>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section reservation-section" id="reservas">
+    <div class="reservation-panel">
+      <div>
+        <div class="section-kicker">Reservas y horarios</div>
+        <h2>Te esperamos en Av. Los Aromos 245, Santiago</h2>
+        <p>
+          Reserva mesa, pregunta por menú del día o coordina pedidos para
+          retirar. Para grupos de 6 o más personas recomendamos avisar con
+          anticipación.
+        </p>
+        <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Reservar por WhatsApp</a>
+      </div>
+      <!-- Reemplazar public/assets/demos/brasa-norte/ambiente-local.webp por foto horizontal del local. -->
+      <div class="reservation-photo image-frame" data-fallback="Foto sugerida: ambiente-local.webp">
+        <img
+          src={`${assetBase}/ambiente-local.webp`}
+          alt="Ambiente interior cálido de Brasa Norte con mesas preparadas"
+          width="620"
+          height="520"
+          loading="lazy"
+          onerror="this.remove()"
+        />
+      </div>
+      <div class="hours-card" aria-label="Horarios de atención">
+        <h3>Horarios</h3>
+        <dl>
+          <div><dt>Lunes a viernes</dt><dd>09:00 - 22:30</dd></div>
+          <div><dt>Sábado</dt><dd>10:00 - 23:00</dd></div>
+          <div><dt>Domingo</dt><dd>10:00 - 17:00</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
 
   <section class="section">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">Opiniones</div>
+        <h2>Comentarios de clientes</h2>
+      </div>
+      <p>Testimonios ficticios, escritos con el tono cercano de un local real.</p>
+    </div>
     <div class="testimonial-grid">
-      <TestimonialCard quote="Se siente como almorzar en una casa bien atendida, pero con café muy bueno." author="Marcela R." detail="Clienta frecuente" />
-      <TestimonialCard quote="Reservamos para equipo y salió todo rápido, rico y con súper buena atención." author="Felipe M." detail="Reserva de oficina" />
-      <TestimonialCard quote="La carta es corta, pero todo tiene cariño. Eso se nota al tiro." author="Daniela P." detail="Visita de fin de semana" />
+      <TestimonialCard variant="statement" quote="La plateada estaba blandita y el café de después fue un acierto. Se nota cocina de verdad." author="Marcela R." detail="Almuerzo de semana" />
+      <TestimonialCard quote="Reservamos para seis y nos tenían la mesa lista. Rápido, rico y con súper buena atención." author="Felipe M." detail="Reserva de oficina" />
+      <TestimonialCard quote="La carta es corta, pero todo tiene cariño. El kuchen tibio con latte quedó en mi lista fija." author="Daniela P." detail="Visita de fin de semana" />
     </div>
   </section>
 
   <FAQ
     items={[
-      { question: '¿Se puede reservar por WhatsApp?', answer: 'Sí, esta demo usa un número placeholder para simular reservas por WhatsApp.' },
-      { question: '¿Hay opciones vegetarianas?', answer: 'Sí, la landing puede destacar platos vegetarianos y cambios de temporada.' },
+      { question: '¿Se puede reservar por WhatsApp?', answer: 'Sí. Esta demo usa el número placeholder +56912345678 para simular reservas y consultas rápidas.' },
+      { question: '¿Tienen pedidos para retirar?', answer: 'Sí, se puede pedir el menú del día, café y algunas preparaciones de vitrina para retirar en el local.' },
+      { question: '¿Qué medios de pago aceptan?', answer: 'La landing puede indicar efectivo, tarjetas y transferencia, según lo que use el negocio real.' },
+      { question: '¿Hay opciones vegetarianas o menú ejecutivo?', answer: 'Sí. El menú ejecutivo puede incluir alternativa vegetariana y cambios de temporada.' },
     ]}
   />
 
   <section class="contact-section">
-    <ContactForm variant="panel" title="Reserva o consulta disponibilidad" submitLabel="Solicitar reserva" />
+    <div class="closing-cta">
+      <div>
+        <div class="section-kicker">Mesa lista</div>
+        <h2>Reserva tu mesa o haz tu pedido por WhatsApp</h2>
+        <p>
+          Una landing así deja claro qué se come, cuándo atiende el local y cómo
+          contactar sin vueltas.
+        </p>
+      </div>
+      <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Haz tu pedido por WhatsApp</a>
+    </div>
+    <ContactForm
+      variant="panel"
+      title="Consulta disponibilidad"
+      description="Formulario visual para reservas, pedidos o cotizaciones de eventos pequeños."
+      submitLabel="Solicitar reserva"
+    />
   </section>
 </DemoLayout>
