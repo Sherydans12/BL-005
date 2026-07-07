@@ -1,79 +1,583 @@
 .theme-novawear {
-  --page-bg: #f5f5f0;
+  --page-bg: #f4f4f0;
   --surface: #ffffff;
-  --surface-muted: #e5e5df;
-  --text: #0c0d0e;
-  --text-muted: #5b5d5f;
-  --border: rgba(12, 13, 14, 0.16);
-  --primary: #0c0d0e;
-  --primary-contrast: #f7f7f2;
-  --accent: #a7f51d;
+  --surface-muted: #e7e7df;
+  --text: #08090a;
+  --text-muted: #555b5f;
+  --border: rgba(8, 9, 10, 0.16);
+  --primary: #08090a;
+  --primary-contrast: #ffffff;
+  --accent: #b8ff1d;
+  --electric: #1157ff;
   --display-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   --display-weight: 800;
   --heading-weight: 800;
   --radius: 4px;
   --card-radius: 2px;
   --button-radius: 2px;
-  --button-bg: #0c0d0e;
-  --button-color: #f7f7f2;
-  --button-border: #0c0d0e;
-  --button-shadow: 8px 8px 0 #a7f51d;
+  --button-bg: #08090a;
+  --button-color: #ffffff;
+  --button-border: #08090a;
+  --button-shadow: 7px 7px 0 #b8ff1d;
   --card-shadow: none;
   --input-bg: #ffffff;
-  --gallery-media-bg:
-    linear-gradient(90deg, rgba(167, 245, 29, 0.9) 0 14%, transparent 14%),
-    linear-gradient(135deg, #0c0d0e, #6d7174);
-  --whatsapp-bg: #0c0d0e;
+  --whatsapp-bg: #08090a;
+  --header-bg: rgba(244, 244, 240, 0.86);
+  background:
+    linear-gradient(90deg, rgba(8, 9, 10, 0.05) 1px, transparent 1px) 0 0 / 4.5rem 4.5rem,
+    var(--page-bg);
 }
 
-.theme-novawear .demo-hero {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 1rem;
-  align-items: stretch;
-  min-height: 78vh;
+.theme-novawear .demo-header__mark {
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--primary);
 }
 
-.theme-novawear .hero-copy {
-  align-content: end;
-  padding-bottom: 2rem;
+.theme-novawear .demo-header__nav a {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.74rem;
+  font-weight: 850;
 }
 
-.theme-novawear .hero-copy h1 {
-  max-width: 10ch;
+.theme-novawear .button {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.theme-novawear .button--ghost {
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.theme-novawear .section {
+  padding: clamp(4.5rem, 9vw, 7.5rem) 0;
+}
+
+.theme-novawear .section-kicker {
+  color: var(--electric);
+}
+
+.theme-novawear h1,
+.theme-novawear h2 {
   text-transform: uppercase;
 }
 
-.theme-novawear .hero-panel {
-  position: relative;
-  min-height: 34rem;
-  background:
-    linear-gradient(90deg, transparent 0 49%, rgba(255, 255, 255, 0.08) 49% 51%, transparent 51%),
-    linear-gradient(145deg, #0c0d0e 0 58%, #a7f51d 58% 68%, #d9d9d2 68%);
-  color: #fff;
+.nw-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(20rem, 1.18fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: stretch;
+  width: min(var(--content-width), calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(3rem, 7vw, 5rem);
 }
 
-.theme-novawear .hero-panel::before {
-  content: "DROP 01";
+.nw-hero__copy {
+  display: grid;
+  align-content: end;
+  gap: 1.4rem;
+  min-height: 38rem;
+  padding: 1rem 0 2rem;
+}
+
+.nw-hero__copy h1 {
+  max-width: 10.5ch;
+}
+
+.nw-hero__copy p {
+  max-width: 35rem;
+  font-size: clamp(1.05rem, 1.45vw, 1.22rem);
+}
+
+.nw-hero__visual {
+  position: relative;
+  min-height: 42rem;
+  overflow: hidden;
+  border: 1px solid var(--primary);
+  background:
+    linear-gradient(90deg, rgba(184, 255, 29, 0.95) 0 4.5rem, transparent 4.5rem),
+    linear-gradient(135deg, rgba(8, 9, 10, 0.22), rgba(8, 9, 10, 0.76)),
+    var(--asset),
+    linear-gradient(135deg, #17191b 0 54%, #f8f8f4 54% 72%, #b8ff1d 72%);
+  background-size: auto, auto, cover, auto;
+  background-position: center;
+}
+
+.nw-hero__visual::before {
+  content: "NOVA";
+  position: absolute;
+  left: clamp(1rem, 3vw, 2rem);
+  top: clamp(1rem, 3vw, 2rem);
+  color: #ffffff;
+  font-family: var(--display-font);
+  font-size: clamp(4rem, 13vw, 11rem);
+  line-height: 0.78;
+}
+
+.nw-hero__visual::after {
+  content: "WEAR";
+  position: absolute;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(5rem, 10vw, 8rem);
+  color: var(--accent);
+  font-family: var(--display-font);
+  font-size: clamp(3.5rem, 10vw, 8.5rem);
+  line-height: 0.78;
+  writing-mode: vertical-rl;
+}
+
+.nw-hero__drop {
   position: absolute;
   right: 1rem;
   bottom: 1rem;
-  color: #0c0d0e;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: clamp(3rem, 9vw, 8rem);
-}
-
-.theme-novawear .service-grid {
-  grid-template-columns: 0.8fr 1.4fr 0.8fr;
-}
-
-.theme-novawear .service-card {
+  display: grid;
+  gap: 0.25rem;
+  width: min(18rem, calc(100% - 2rem));
+  padding: 1rem;
+  background: var(--accent);
+  color: var(--primary);
   text-transform: uppercase;
 }
 
-@media (max-width: 820px) {
-  .theme-novawear .demo-hero,
-  .theme-novawear .service-grid {
+.nw-hero__drop strong {
+  font-family: var(--display-font);
+  font-size: 2rem;
+  line-height: 0.9;
+}
+
+.nw-hero__drop span {
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.nw-image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.nw-image__label {
+  display: inline-flex;
+  max-width: calc(100% - 1rem);
+  margin: 0.5rem;
+  padding: 0.45rem 0.55rem;
+  background: rgba(255, 255, 255, 0.92);
+  color: #08090a;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nw-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.nw-section-head p {
+  max-width: 31rem;
+}
+
+.nw-text-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  padding-bottom: 0.2rem;
+  border-bottom: 3px solid var(--accent);
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.nw-category-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr 0.9fr;
+  grid-auto-rows: minmax(18rem, auto);
+  gap: 1rem;
+}
+
+.nw-category-card {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 22rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.nw-category-card:first-child {
+  grid-row: span 2;
+  min-height: 35rem;
+}
+
+.nw-category-card:nth-child(4) {
+  grid-column: span 2;
+}
+
+.nw-category-card__media {
+  min-height: 14rem;
+  background:
+    linear-gradient(135deg, rgba(8, 9, 10, 0.1), rgba(8, 9, 10, 0.34)),
+    var(--asset),
+    repeating-linear-gradient(135deg, #111315 0 1rem, #22262a 1rem 2rem);
+  background-size: auto, cover, auto;
+}
+
+.nw-category-card > div:last-child {
+  padding: 1rem;
+}
+
+.nw-category-card span,
+.nw-product-card span {
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  color: var(--electric);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nw-category-card h3,
+.nw-product-card h3,
+.nw-lookbook-card h3 {
+  text-transform: uppercase;
+}
+
+.nw-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.nw-product-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.nw-product-card:nth-child(2n) {
+  transform: translateY(1.25rem);
+}
+
+.nw-product-card__media {
+  min-height: 17rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(8, 9, 10, 0.16)),
+    var(--asset),
+    linear-gradient(135deg, #d7d9d2 0 50%, #ffffff 50%);
+  background-size: auto, cover, auto;
+}
+
+.nw-product-card__body {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem;
+}
+
+.nw-product-card__buy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.nw-product-card__buy strong {
+  font-size: 1.08rem;
+}
+
+.nw-product-card__buy a {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.6rem;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.nw-drop,
+.nw-final-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  width: min(var(--content-width), calc(100% - 2rem));
+  margin: clamp(2rem, 5vw, 4rem) auto;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border: 1px solid var(--primary);
+  background:
+    linear-gradient(90deg, rgba(184, 255, 29, 0.92) 0 1.25rem, transparent 1.25rem),
+    radial-gradient(circle at 82% 22%, rgba(17, 87, 255, 0.42), transparent 22rem),
+    #08090a;
+  color: #ffffff;
+}
+
+.nw-drop h2,
+.nw-final-cta h2 {
+  color: #ffffff;
+}
+
+.nw-drop p,
+.nw-final-cta p {
+  max-width: 46rem;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.nw-drop .button,
+.nw-final-cta .button {
+  background: #ffffff;
+  color: var(--primary);
+  border-color: #ffffff;
+  box-shadow: 7px 7px 0 var(--accent);
+}
+
+.nw-lookbook-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.nw-lookbook-card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.nw-lookbook-card:nth-child(2) {
+  margin-top: 4rem;
+}
+
+.nw-lookbook-card__media {
+  min-height: 25rem;
+  background:
+    linear-gradient(135deg, rgba(8, 9, 10, 0.12), rgba(8, 9, 10, 0.38)),
+    var(--asset),
+    linear-gradient(135deg, #08090a 0 48%, #f4f4f0 48% 68%, #b8ff1d 68%);
+  background-size: auto, cover, auto;
+}
+
+.nw-lookbook-card h3,
+.nw-lookbook-card p {
+  padding-inline: 1rem;
+}
+
+.nw-lookbook-card h3 {
+  padding-top: 1rem;
+}
+
+.nw-lookbook-card p {
+  padding-bottom: 1rem;
+}
+
+.nw-process {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 1.28fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.nw-process ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nw-process li {
+  min-height: 9rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.nw-process li span {
+  display: block;
+  margin-bottom: 1.4rem;
+  color: var(--primary);
+  font-family: var(--display-font);
+  font-size: 2.4rem;
+  line-height: 0.8;
+}
+
+.nw-trust {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  padding-top: 0;
+}
+
+.nw-trust__item {
+  min-height: 13rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.nw-trust__item:nth-child(2n) {
+  background: var(--primary);
+}
+
+.nw-trust__item:nth-child(2n) strong,
+.nw-trust__item:nth-child(2n) p {
+  color: #ffffff;
+}
+
+.nw-trust__item strong {
+  display: block;
+  margin-bottom: 3rem;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+}
+
+.nw-testimonials h2 {
+  margin-bottom: 1.5rem;
+}
+
+.nw-review-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.85fr 0.95fr;
+  gap: 1rem;
+}
+
+.nw-review-grid figure {
+  display: grid;
+  align-content: space-between;
+  min-height: 16rem;
+  margin: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  background: #ffffff;
+}
+
+.nw-review-grid figure:first-child {
+  background: var(--accent);
+}
+
+.nw-review-grid blockquote {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  font-weight: 760;
+  line-height: 1.35;
+}
+
+.nw-review-grid figcaption {
+  margin-top: 1.2rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.theme-novawear .faq-section {
+  width: min(var(--content-width), calc(100% - 2rem));
+}
+
+.theme-novawear .faq-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.theme-novawear .faq-list details {
+  border-radius: 0;
+  background: #ffffff;
+}
+
+.nw-final-cta {
+  margin-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+@media (max-width: 1020px) {
+  .nw-hero,
+  .nw-process {
     grid-template-columns: 1fr;
+  }
+
+  .nw-hero__copy {
+    min-height: auto;
+  }
+
+  .nw-category-grid,
+  .nw-product-grid,
+  .nw-lookbook-grid,
+  .nw-trust,
+  .nw-review-grid,
+  .theme-novawear .faq-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nw-category-card:first-child,
+  .nw-category-card:nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .nw-product-card:nth-child(2n),
+  .nw-lookbook-card:nth-child(2) {
+    transform: none;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .theme-novawear {
+    --button-shadow: 5px 5px 0 #b8ff1d;
+  }
+
+  .nw-hero {
+    padding-top: 2.5rem;
+  }
+
+  .nw-hero__visual {
+    min-height: 30rem;
+  }
+
+  .nw-hero__visual::after {
+    writing-mode: horizontal-tb;
+    bottom: 5.4rem;
+  }
+
+  .nw-section-head,
+  .nw-drop,
+  .nw-final-cta {
+    display: grid;
+    align-items: start;
+  }
+
+  .nw-category-grid,
+  .nw-product-grid,
+  .nw-lookbook-grid,
+  .nw-process ol,
+  .nw-trust,
+  .nw-review-grid,
+  .theme-novawear .faq-list {
+    grid-template-columns: 1fr;
+  }
+
+  .nw-category-card,
+  .nw-product-card,
+  .nw-lookbook-card,
+  .nw-review-grid figure {
+    min-height: auto;
+  }
+
+  .nw-product-card__media,
+  .nw-lookbook-card__media {
+    min-height: 21rem;
+  }
+
+  .nw-trust__item {
+    min-height: 10rem;
   }
 }

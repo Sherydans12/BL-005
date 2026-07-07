@@ -1,14 +1,64 @@
 ---
-import ContactForm from '@components/ContactForm.astro';
 import FAQ from '@components/FAQ.astro';
-import GallerySection from '@components/GallerySection.astro';
-import ServiceCard from '@components/ServiceCard.astro';
-import TestimonialCard from '@components/TestimonialCard.astro';
 import DemoLayout from '@layouts/DemoLayout.astro';
 import { getDemoBySlug } from '@data/demos';
 import '@styles/themes/novawear.css';
 
 const demo = getDemoBySlug('novawear')!;
+const whatsappBase = 'https://wa.me/56912345678';
+const stockMessage = encodeURIComponent('Hola NovaWear, quiero consultar stock de la coleccion.');
+const stockHref = `${whatsappBase}?text=${stockMessage}`;
+
+const categories = [
+  {
+    title: 'Ropa urbana',
+    label: 'Oversize / capas',
+    asset: 'coleccion-urbana.webp',
+    description: 'Hoodies, chaquetas y cargos para armar looks de calle con contraste.',
+  },
+  {
+    title: 'Zapatillas',
+    label: 'Street runners',
+    asset: 'producto-zapatillas.webp',
+    description: 'Modelos de rotacion rapida para completar el outfit sin vueltas.',
+  },
+  {
+    title: 'Accesorios',
+    label: 'Crossbody / caps',
+    asset: 'detalle-accesorios.webp',
+    description: 'Piezas chicas que suben el look y ayudan a vender packs por WhatsApp.',
+  },
+  {
+    title: 'Ultimos drops',
+    label: 'Stock limitado',
+    asset: 'lookbook-modelo.webp',
+    description: 'Lanzamientos cortos con tallas seleccionadas y reposicion segun demanda.',
+  },
+];
+
+const products = [
+  { title: 'Chaqueta Oversize Grafito', price: '$49.990', tag: 'Corte amplio', asset: 'producto-chaqueta.webp' },
+  { title: 'Polera Essential Blanca', price: '$18.990', tag: 'Algodon pesado', asset: 'producto-polera.webp' },
+  { title: 'Cargo Pants Arena', price: '$39.990', tag: 'Fit relajado', asset: 'producto-cargo.webp' },
+  { title: 'Zapatilla Street Runner', price: '$64.990', tag: 'Drop activo', asset: 'producto-zapatillas.webp' },
+  { title: 'Bolso Crossbody', price: '$24.990', tag: 'Uso diario', asset: 'producto-bolso.webp' },
+  { title: 'Hoodie Nova Black', price: '$42.990', tag: 'Best seller', asset: 'producto-hoodie.webp' },
+  { title: 'Jockey Logo Lime', price: '$14.990', tag: 'Accesorio', asset: 'producto-jockey.webp' },
+  { title: 'Overshirt Denim Smoke', price: '$46.990', tag: 'Capa clave', asset: 'producto-overshirt.webp' },
+];
+
+const lookbook = [
+  { title: 'Fit de dia', text: 'Polera blanca, cargo arena y zapatilla runner.', asset: 'lookbook-modelo.webp' },
+  { title: 'Noche urbana', text: 'Hoodie negro, chaqueta grafito y bolso crossbody.', asset: 'hero-editorial-streetwear.webp' },
+  { title: 'Detalle que vende', text: 'Close-up de texturas, cierres, etiqueta y accesorios.', asset: 'detalle-accesorios.webp' },
+];
+
+const steps = [
+  'Elige el producto o look que te interesa.',
+  'Consulta stock y talla por WhatsApp.',
+  'Coordina pago, despacho o retiro.',
+  'Recibe tu pedido y arma el siguiente fit.',
+];
 ---
 
 <DemoLayout
@@ -17,69 +67,211 @@ const demo = getDemoBySlug('novawear')!;
   businessName={demo.name}
   category={demo.category}
   theme={demo.slug}
-  ctaLabel="Ver catálogo"
+  ctaLabel="Consultar stock"
+  whatsappMessage="Hola NovaWear, quiero consultar stock de la coleccion."
   headerVariant="minimal"
 >
-  <!--
-    TODO NovaWear:
-    Identidad: urbana, editorial y directa, con negro, blanco, gris y acento verde lima o azul eléctrico.
-    Desarrollar: catálogo visual, drops, guía de tallas, disponibilidad, looks y pedidos por WhatsApp.
-    No tocar: rutas, DemoLayout, themes de otras demos ni contenido de otras landings.
-    Este chat especializado debe trabajar solo src/pages/demos/novawear.astro y su theme.
-  -->
-  <section class="demo-hero">
-    <div class="hero-copy">
-      <div class="section-kicker">Streetwear · Drops · Catálogo</div>
-      <h1>Ropa urbana lista para el próximo drop</h1>
+  <section class="nw-hero">
+    <div class="nw-hero__copy">
+      <div class="section-kicker">Nueva temporada · Drops limitados · Envio a Chile</div>
+      <h1>Streetwear listo para vender por WhatsApp</h1>
       <p>
-        Poleras, overshirts, hoodies y básicos con actitud editorial. Una vitrina
-        simple para mirar la colección y pedir disponibilidad por WhatsApp.
+        Una vitrina editorial para marcas que lanzan ropa, zapatillas y accesorios por Instagram,
+        pero necesitan un catalogo web mas claro, moderno y confiable.
       </p>
       <div class="hero-actions">
-        <a class="button" href="#galeria">Ver colección</a>
-        <a class="button button--ghost" href="#contacto">Pedir stock</a>
+        <a class="button" href={stockHref} target="_blank" rel="noreferrer">Consultar stock</a>
+        <a class="button button--ghost" href="#galeria">Ver coleccion</a>
       </div>
     </div>
-    <div class="hero-panel" aria-label="Composición editorial de NovaWear"></div>
-  </section>
 
-  <section class="section" id="servicios">
-    <div class="section-kicker">Colección base</div>
-    <h2>Catálogo corto, visual y directo al pedido</h2>
-    <div class="service-grid">
-      <ServiceCard title="Hoodies boxy" meta="Drop" description="Fit amplio, algodón pesado y colores neutros para rotación diaria." />
-      <ServiceCard variant="featured" title="Poleras gráficas" meta="Graphic" description="Diseños limitados con tallas S a XL y reposición según demanda." />
-      <ServiceCard title="Accesorios" meta="Add-on" description="Jockeys, totes y piezas pequeñas para aumentar ticket promedio." />
+    <div
+      class="nw-hero__visual nw-image"
+      style={`--asset: url('/assets/demos/novawear/hero-editorial-streetwear.webp')`}
+      aria-label="Campana editorial urbana de NovaWear"
+    >
+      <span class="nw-image__label">Reemplazar: hero-editorial-streetwear.webp</span>
+      <div class="nw-hero__drop">
+        <strong>DROP 01</strong>
+        <span>12 piezas · stock limitado</span>
+      </div>
     </div>
   </section>
 
-  <GallerySection
-    title="Editorial de colección"
-    eyebrow="Lookbook"
-    layout="feature"
-    items={[
-      { title: 'Fit urbano', description: 'Siluetas amplias y neutros fáciles de combinar.' },
-      { title: 'Pieza destacada', description: 'Un producto héroe por drop para enfocar conversión.' },
-      { title: 'Detalle gráfico', description: 'Close-ups de textura, etiqueta y estampado.' },
-    ]}
-  />
+  <section class="section nw-categories" id="servicios" aria-labelledby="categories-title">
+    <div class="nw-section-head">
+      <div>
+        <div class="section-kicker">Categorias visuales</div>
+        <h2 id="categories-title">La coleccion se entiende antes de preguntar</h2>
+      </div>
+      <p>
+        Bloques grandes, directos y reemplazables por fotos reales para que cada categoria tenga
+        intencion comercial.
+      </p>
+    </div>
 
-  <section class="section">
-    <div class="testimonial-grid">
-      <TestimonialCard quote="Pedí por WhatsApp y me confirmaron talla altiro. Muy cómodo." author="Benja C." detail="Compra catálogo" />
-      <TestimonialCard quote="Las fotos ayudan harto a entender el fit antes de comprar." author="Antonia F." detail="Cliente online" />
-      <TestimonialCard quote="Se siente como marca, no solo como una lista de productos." author="Nico R." detail="Drop anterior" />
+    <div class="nw-category-grid">
+      {
+        categories.map((category) => (
+          <article class="nw-category-card">
+            <div
+              class="nw-category-card__media nw-image"
+              style={`--asset: url('/assets/demos/novawear/${category.asset}')`}
+            >
+              <span class="nw-image__label">Reemplazar: {category.asset}</span>
+            </div>
+            <div>
+              <span>{category.label}</span>
+              <h3>{category.title}</h3>
+              <p>{category.description}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section nw-products" id="galeria" aria-labelledby="products-title">
+    <div class="nw-section-head">
+      <div>
+        <div class="section-kicker">Productos destacados</div>
+        <h2 id="products-title">Catalogo corto, precio claro y consulta rapida</h2>
+      </div>
+      <a class="nw-text-link" href={stockHref} target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+    </div>
+
+    <div class="nw-product-grid">
+      {
+        products.map((product) => (
+          <article class="nw-product-card">
+            <div
+              class="nw-product-card__media nw-image"
+              style={`--asset: url('/assets/demos/novawear/${product.asset}')`}
+            >
+              <span class="nw-image__label">Reemplazar: {product.asset}</span>
+            </div>
+            <div class="nw-product-card__body">
+              <span>{product.tag}</span>
+              <h3>{product.title}</h3>
+              <div class="nw-product-card__buy">
+                <strong>{product.price}</strong>
+                <a href={`${whatsappBase}?text=${encodeURIComponent(`Hola NovaWear, quiero consultar stock de ${product.title}.`)}`} target="_blank" rel="noreferrer">
+                  Consultar
+                </a>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="nw-drop" aria-labelledby="drop-title">
+    <div>
+      <div class="section-kicker">Drop urbano</div>
+      <h2 id="drop-title">Edicion limitada, movimiento rapido</h2>
+      <p>
+        Activa urgencia sin carrito: muestra el drop, resuelve tallas por WhatsApp y coordina compra
+        con atencion directa.
+      </p>
+    </div>
+    <a class="button" href={stockHref} target="_blank" rel="noreferrer">Pedir disponibilidad</a>
+  </section>
+
+  <section class="section nw-lookbook" aria-labelledby="lookbook-title">
+    <div class="nw-section-head">
+      <div>
+        <div class="section-kicker">Lookbook</div>
+        <h2 id="lookbook-title">Inspiracion para comprar el look completo</h2>
+      </div>
+      <p>Combinaciones simples para vender por outfit, no solo por producto suelto.</p>
+    </div>
+
+    <div class="nw-lookbook-grid">
+      {
+        lookbook.map((item) => (
+          <article class="nw-lookbook-card">
+            <div
+              class="nw-lookbook-card__media nw-image"
+              style={`--asset: url('/assets/demos/novawear/${item.asset}')`}
+            >
+              <span class="nw-image__label">Reemplazar: {item.asset}</span>
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section nw-process" aria-labelledby="process-title">
+    <div>
+      <div class="section-kicker">Como comprar</div>
+      <h2 id="process-title">Del catalogo al pedido en cuatro pasos</h2>
+    </div>
+    <ol>
+      {steps.map((step, index) => <li><span>{String(index + 1).padStart(2, '0')}</span>{step}</li>)}
+    </ol>
+  </section>
+
+  <section class="section nw-trust" aria-label="Confianza de compra">
+    <div class="nw-trust__item">
+      <strong>Cambios y devoluciones</strong>
+      <p>Politica visible por talla o falla, segun condiciones de la tienda.</p>
+    </div>
+    <div class="nw-trust__item">
+      <strong>Envios a Chile</strong>
+      <p>Despacho coordinado por comuna, region y disponibilidad del producto.</p>
+    </div>
+    <div class="nw-trust__item">
+      <strong>Pago seguro</strong>
+      <p>Transferencia o medio acordado antes del envio, sin checkout ficticio.</p>
+    </div>
+    <div class="nw-trust__item">
+      <strong>Atencion por WhatsApp</strong>
+      <p>Consulta directa para tallas, medidas, colores y fecha de retiro.</p>
+    </div>
+  </section>
+
+  <section class="section nw-testimonials" aria-labelledby="reviews-title">
+    <div class="section-kicker">Opiniones</div>
+    <h2 id="reviews-title">Clientes que compran cuando el catalogo esta claro</h2>
+    <div class="nw-review-grid">
+      <figure>
+        <blockquote>"Pregunte por talla y me mandaron medidas altiro. La chaqueta llego tal cual la foto."</blockquote>
+        <figcaption>Vale P. · Santiago</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"Me gusto poder ver los outfits completos antes de pedir. Termine sumando bolso y jockey."</blockquote>
+        <figcaption>Martin R. · Concepcion</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"Se nota mas marca que solo vender por historias. Todo se ve ordenado y facil de consultar."</blockquote>
+        <figcaption>Josefa M. · Valparaiso</figcaption>
+      </figure>
     </div>
   </section>
 
   <FAQ
     items={[
-      { question: '¿El catálogo tiene carrito?', answer: 'No en esta etapa. La demo prioriza vitrina y contacto por WhatsApp.' },
-      { question: '¿Se puede agregar guía de tallas?', answer: 'Sí, queda contemplado para una siguiente iteración de la landing.' },
+      { question: '¿Tienen stock inmediato?', answer: 'Depende del producto, talla y color. La idea es consultar por WhatsApp para confirmar disponibilidad antes de pagar.' },
+      { question: '¿Hacen envios?', answer: 'Si, la demo contempla envios a Chile coordinados por WhatsApp segun comuna, region y fecha de despacho.' },
+      { question: '¿Puedo cambiar talla?', answer: 'Se puede informar una politica de cambios por talla, estado del producto y plazo definido por la tienda.' },
+      { question: '¿Como consulto por un producto?', answer: 'Cada producto tiene un enlace Consultar que abre WhatsApp con el nombre del item para pedir stock o medidas.' },
+      { question: '¿Tienen retiro presencial?', answer: 'Puede existir retiro en punto acordado si la tienda lo ofrece. Esta demo deja el flujo preparado para confirmarlo por mensaje.' },
     ]}
   />
 
-  <section class="contact-section">
-    <ContactForm variant="inline" title="Consulta talla o disponibilidad" submitLabel="Consultar stock" />
+  <section class="nw-final-cta" id="contacto">
+    <div>
+      <div class="section-kicker">NovaWear online</div>
+      <h2>Encuentra tu proximo outfit</h2>
+      <p>
+        Consulta tallas, stock y colores disponibles. Esta demo muestra como una tienda de redes
+        puede verse mas profesional sin convertir la compra en un ecommerce complejo.
+      </p>
+    </div>
+    <a class="button" href={stockHref} target="_blank" rel="noreferrer">Consultar stock ahora</a>
   </section>
 </DemoLayout>
