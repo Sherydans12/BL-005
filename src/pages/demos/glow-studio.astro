@@ -1,14 +1,104 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import ContactForm from '@components/ContactForm.astro';
 import FAQ from '@components/FAQ.astro';
-import GallerySection from '@components/GallerySection.astro';
-import ServiceCard from '@components/ServiceCard.astro';
 import TestimonialCard from '@components/TestimonialCard.astro';
 import DemoLayout from '@layouts/DemoLayout.astro';
 import { getDemoBySlug } from '@data/demos';
 import '@styles/themes/glow-studio.css';
 
 const demo = getDemoBySlug('glow-studio')!;
+const assetBase = '/assets/demos/glow-studio';
+const assetDir = join(process.cwd(), 'public', 'assets', 'demos', 'glow-studio');
+const getGlowAsset = (fileName: string) => ({
+  src: `${assetBase}/${fileName}`,
+  exists: existsSync(join(assetDir, fileName)),
+});
+const glowAssets = {
+  hero: getGlowAsset('hero-estudio-belleza.webp'),
+  beforeAfter: getGlowAsset('antes-despues.webp'),
+  ambience: getGlowAsset('ambiente-premium.webp'),
+  team: getGlowAsset('equipo-profesional.webp'),
+};
+const whatsappHref =
+  'https://wa.me/56912345678?text=Hola%2C%20quiero%20reservar%20una%20hora%20en%20Glow%20Studio.';
+
+const services = [
+  {
+    title: 'Limpieza facial profunda',
+    category: 'Skin',
+    price: 'desde $24.990',
+    time: '60 min',
+    description: 'Higiene, exfoliacion suave e hidratacion para una piel fresca y luminosa.',
+    image: getGlowAsset('servicio-facial.webp'),
+    alt: 'Tratamiento facial profesional en cabina de estetica',
+    fallback: 'Reemplazar con servicio-facial.webp',
+  },
+  {
+    title: 'Perfilado de cejas',
+    category: 'Detalle',
+    price: 'desde $14.990',
+    time: '30 min',
+    description: 'Diseno natural, depilacion precisa y acabado prolijo para el rostro.',
+    image: getGlowAsset('servicio-cejas.webp'),
+    alt: 'Perfilado de cejas en estudio de belleza',
+    fallback: 'Reemplazar con servicio-cejas.webp',
+  },
+  {
+    title: 'Manicure permanente',
+    category: 'Nails',
+    price: 'desde $19.990',
+    time: '75 min',
+    description: 'Preparacion de unas, esmaltado de larga duracion y terminacion limpia.',
+    image: getGlowAsset('servicio-unas.webp'),
+    alt: 'Manicure permanente con tonos nude en mesa de trabajo',
+    fallback: 'Reemplazar con servicio-unas.webp',
+  },
+  {
+    title: 'Corte y barba premium',
+    category: 'Barber',
+    price: 'desde $22.990',
+    time: '50 min',
+    description: 'Corte asesorado, perfilado de barba, lavado y styling con producto profesional.',
+    image: getGlowAsset('servicio-barberia.webp'),
+    alt: 'Servicio de corte y barba premium en barberia elegante',
+    fallback: 'Reemplazar con servicio-barberia.webp',
+  },
+  {
+    title: 'Masaje de relajacion',
+    category: 'Wellness',
+    price: 'desde $26.990',
+    time: '45 min',
+    description: 'Sesion breve para bajar tension, cuidar la postura y salir renovada.',
+    image: getGlowAsset('servicio-masaje.webp'),
+    alt: 'Masaje de relajacion en cabina calida y limpia',
+    fallback: 'Reemplazar con servicio-masaje.webp',
+  },
+  {
+    title: 'Peinado para evento',
+    category: 'Styling',
+    price: 'desde $29.990',
+    time: '70 min',
+    description: 'Ondas, recogidos suaves o brushing elegante para reuniones y celebraciones.',
+    image: getGlowAsset('servicio-peinado.webp'),
+    alt: 'Peinado de evento con terminacion elegante',
+    fallback: 'Reemplazar con servicio-peinado.webp',
+  },
+];
+
+const differentiators = [
+  'Atencion puntual y agenda confirmada por WhatsApp',
+  'Cabinas higienizadas entre cada servicio',
+  'Productos profesionales segun tipo de piel o cabello',
+  'Asesoria breve antes de comenzar cada sesion',
+];
+
+const packs = [
+  { name: 'Pack Glow Facial', detail: 'Limpieza + hidratacion + mascara calmante', price: 'desde $24.990' },
+  { name: 'Pack Evento', detail: 'Peinado + manicure permanente + retoque express', price: 'desde $49.990' },
+  { name: 'Pack Barber Pro', detail: 'Corte + barba + perfilado de cejas', price: 'desde $32.990' },
+];
 ---
 
 <DemoLayout
@@ -17,69 +107,290 @@ const demo = getDemoBySlug('glow-studio')!;
   businessName={demo.name}
   category={demo.category}
   theme={demo.slug}
-  ctaLabel="Agendar hora"
+  ctaLabel="Reservar hora"
   headerVariant="minimal"
+  whatsappMessage="Hola, quiero reservar una hora en Glow Studio."
 >
-  <!--
-    TODO Glow Studio:
-    Identidad: premium, elegante, silenciosa, con champagne, nude, negro suave y blanco cálido.
-    Desarrollar: tratamientos signature, agenda visual, equipo, packs, ritual de servicio y prueba social.
-    No tocar: rutas, DemoLayout, themes de otras demos ni contenido de otras landings.
-    Este chat especializado debe trabajar solo src/pages/demos/glow-studio.astro y su theme.
-  -->
   <section class="demo-hero">
     <div class="hero-copy">
-      <div class="section-kicker">Beauty bar · Barbería · Skin</div>
-      <h1>Tu próxima hora, con terminación premium</h1>
+      <div class="section-kicker">Beauty studio · Barberia · Skin</div>
+      <h1>Agenda tu momento Glow</h1>
       <p>
-        Cortes, perfilado, tratamientos faciales y servicios express para verse
-        impecable sin perder tiempo. Atención cuidada, agenda ordenada y detalles finos.
+        Servicios de estetica, barberia y cuidado personal en un estudio boutique:
+        agenda ordenada, terminaciones finas y una experiencia pensada para llegar,
+        relajarte y salir impecable.
       </p>
       <div class="hero-actions">
-        <a class="button" href="#contacto">Agendar hora</a>
+        <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Reservar hora</a>
         <a class="button button--ghost" href="#servicios">Ver servicios</a>
       </div>
+      <dl class="hero-trust" aria-label="Datos destacados de Glow Studio">
+        <div>
+          <dt>Atencion</dt>
+          <dd>Solo con reserva</dd>
+        </div>
+        <div>
+          <dt>Clientas</dt>
+          <dd>+300 atendidas</dd>
+        </div>
+        <div>
+          <dt>Servicios</dt>
+          <dd>desde $14.990</dd>
+        </div>
+      </dl>
     </div>
-    <div class="hero-panel" aria-label="Composición premium de Glow Studio"></div>
+    <div class="hero-panel">
+      <div class="image-frame image-frame--hero" data-fallback="Foto sugerida: hero-estudio-belleza.webp">
+        {
+          glowAssets.hero.exists && (
+            <img
+              src={glowAssets.hero.src}
+              alt="Interior premium de estudio de belleza con espejo, silla y luz calida"
+              width="840"
+              height="980"
+              fetchpriority="high"
+            />
+          )
+        }
+      </div>
+      <div class="booking-card" aria-label="Agenda disponible">
+        <span>Proxima hora</span>
+        <strong>Hoy · 18:30</strong>
+        <small>Limpieza facial profunda</small>
+      </div>
+      <div class="hero-badge">Reserva rapida por WhatsApp</div>
+    </div>
   </section>
 
-  <section class="section" id="servicios">
-    <div class="section-kicker">Servicios signature</div>
-    <h2>Una experiencia pulida desde la llegada</h2>
-    <div class="service-grid">
-      <ServiceCard title="Corte y styling" meta="Barbería" description="Corte asesorado, lavado y terminación con productos profesionales." />
-      <ServiceCard variant="featured" title="Glow facial express" meta="Skin" description="Limpieza, hidratación y acabado luminoso para eventos o rutina mensual." />
-      <ServiceCard title="Perfilado premium" meta="Detalles" description="Cejas, barba y terminaciones para mantener una imagen consistente." />
+  <section class="section services-section" id="servicios">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">Servicios destacados</div>
+        <h2>Catalogo breve, claro y facil de reservar</h2>
+      </div>
+      <p>
+        Valores ficticios para esta demo. La estructura permite destacar servicios
+        de estetica, barberia, unas, facial, masaje o eventos sin parecer una lista generica.
+      </p>
+    </div>
+    <div class="glow-service-list">
+      {
+        services.map((service) => (
+          <article class="glow-service">
+            <div class="glow-service__media image-frame" data-fallback={service.fallback}>
+              {
+                service.image.exists && (
+                  <img
+                    src={service.image.src}
+                    alt={service.alt}
+                    width="420"
+                    height="520"
+                    loading="lazy"
+                  />
+                )
+              }
+            </div>
+            <div class="glow-service__copy">
+              <span>{service.category}</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </div>
+            <div class="glow-service__meta">
+              <strong>{service.price}</strong>
+              <small>{service.time}</small>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </section>
 
-  <GallerySection
-    title="Detalles del estudio"
-    eyebrow="Look & feel"
-    layout="strip"
-    items={[
-      { title: 'Cabina limpia', description: 'Espacios privados para tratamientos faciales.' },
-      { title: 'Terminación barber', description: 'Servicios pensados para agenda rápida.' },
-      { title: 'Ritual de producto', description: 'Recomendaciones simples para mantener resultados.' },
-    ]}
-  />
+  <section class="section experience-section">
+    <div class="experience-panel">
+      <div class="experience-copy">
+        <div class="section-kicker">Experiencia Glow</div>
+        <h2>Una visita cuidada desde la confirmacion hasta el espejo final</h2>
+        <p>
+          La pagina comunica lo que muchas clientas buscan antes de reservar:
+          higiene visible, puntualidad, atencion personalizada y un espacio que se siente confiable.
+        </p>
+      </div>
+      <div class="experience-list" aria-label="Diferenciadores de Glow Studio">
+        {
+          differentiators.map((item) => (
+            <div>
+              <span></span>
+              <p>{item}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section results-section">
+    <div class="result-layout">
+      <div class="result-media image-frame" data-fallback="Foto sugerida: antes-despues.webp">
+        {
+          glowAssets.beforeAfter.exists && (
+            <img
+              src={glowAssets.beforeAfter.src}
+              alt="Composicion de antes y despues estetico con resultado natural"
+              width="760"
+              height="620"
+              loading="lazy"
+            />
+          )
+        }
+      </div>
+      <div class="result-copy">
+        <div class="section-kicker">Resultados naturales</div>
+        <h2>Antes y despues sin promesas exageradas</h2>
+        <p>
+          Ideal para mostrar cambios de cejas, manicure, barba o luminosidad facial
+          con lenguaje comercial responsable y visuales faciles de reemplazar.
+        </p>
+        <ul>
+          <li>Registro visual limpio, sin claims medicos.</li>
+          <li>Comparaciones realistas y bien iluminadas.</li>
+          <li>CTA inmediato para consultar disponibilidad.</li>
+        </ul>
+        <a class="button button--ghost" href={whatsappHref} target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section packs-section">
+    <div class="pack-board">
+      <div>
+        <div class="section-kicker">Packs y promociones</div>
+        <h2>Promos simples para decidir hoy</h2>
+      </div>
+      <div class="pack-list">
+        {
+          packs.map((pack) => (
+            <article>
+              <div>
+                <h3>{pack.name}</h3>
+                <p>{pack.detail}</p>
+              </div>
+              <strong>{pack.price}</strong>
+            </article>
+          ))
+        }
+      </div>
+      <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Pedir pack por WhatsApp</a>
+    </div>
+  </section>
+
+  <section class="section studio-section" id="galeria">
+    <div class="studio-grid">
+      <div class="studio-copy">
+        <div class="section-kicker">Equipo y ambiente</div>
+        <h2>Un estudio que se siente reservado, limpio y profesional</h2>
+        <p>
+          La composicion deja espacio para fotos del salon, estaciones de trabajo,
+          equipo profesional o detalles de producto. Si aun no hay material real,
+          los placeholders mantienen una presencia elegante.
+        </p>
+      </div>
+      <div class="studio-photo studio-photo--large image-frame" data-fallback="Foto sugerida: ambiente-premium.webp">
+        {
+          glowAssets.ambience.exists && (
+            <img
+              src={glowAssets.ambience.src}
+              alt="Ambiente premium de salon con sillones, espejo y detalles champagne"
+              width="760"
+              height="920"
+              loading="lazy"
+            />
+          )
+        }
+      </div>
+      <div class="studio-photo image-frame" data-fallback="Foto sugerida: equipo-profesional.webp">
+        {
+          glowAssets.team.exists && (
+            <img
+              src={glowAssets.team.src}
+              alt="Equipo profesional de estudio de belleza preparando una atencion"
+              width="520"
+              height="520"
+              loading="lazy"
+            />
+          )
+        }
+      </div>
+    </div>
+  </section>
 
   <section class="section">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">Opiniones</div>
+        <h2>Confianza antes de reservar</h2>
+      </div>
+      <p>Testimonios ficticios, pensados para sonar reales y comerciales sin exagerar.</p>
+    </div>
     <div class="testimonial-grid">
-      <TestimonialCard quote="Me atendieron puntual y salí lista para una reunión. Muy fino todo." author="Camila V." detail="Tratamiento facial" />
-      <TestimonialCard quote="El corte quedó exacto a lo que pedí, con una asesoría súper clara." author="Matías A." detail="Barbería" />
-      <TestimonialCard variant="statement" quote="La experiencia se siente más boutique que peluquería tradicional." author="Josefina L." detail="Clienta mensual" />
+      <TestimonialCard variant="statement" quote="Me atendieron puntual, el lugar estaba impecable y sali lista para mi reunion." author="Camila V." detail="Glow facial express" />
+      <TestimonialCard quote="El corte y la barba quedaron prolijos, con una asesoria muy clara. Se nota el cuidado." author="Matias A." detail="Corte y barba premium" />
+      <TestimonialCard quote="Reserve por WhatsApp y fue rapidisimo. La manicure quedo elegante y muy natural." author="Josefina L." detail="Manicure permanente" />
+    </div>
+  </section>
+
+  <section class="section reservation-section" id="reservas">
+    <div class="reservation-panel">
+      <div>
+        <div class="section-kicker">Reservas</div>
+        <h2>Horario claro, direccion simple y CTA directo</h2>
+        <p>
+          Av. Nueva Providencia 1850, oficina 604, Santiago. Agenda ficticia para
+          demo comercial, lista para conectar despues con WhatsApp, calendario o CRM.
+        </p>
+        <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Reservar por WhatsApp</a>
+      </div>
+      <div class="schedule-card" aria-label="Horarios de atencion">
+        <h3>Horarios</h3>
+        <dl>
+          <div><dt>Lunes a viernes</dt><dd>10:00 - 20:00</dd></div>
+          <div><dt>Sabado</dt><dd>10:00 - 15:00</dd></div>
+          <div><dt>Domingo</dt><dd>Cerrado</dd></div>
+        </dl>
+      </div>
+      <div class="message-card">
+        <span>Mensaje sugerido</span>
+        <p>Hola, quiero reservar una hora en Glow Studio. Me interesa un servicio facial esta semana.</p>
+      </div>
     </div>
   </section>
 
   <FAQ
     items={[
-      { question: '¿La agenda está conectada a un sistema real?', answer: 'No todavía. Esta versión deja el flujo visual listo para conectar más adelante.' },
-      { question: '¿Se pueden destacar packs?', answer: 'Sí, en la próxima etapa se pueden crear packs mensuales, novias o eventos.' },
+      { question: '¿Atienden solo con reserva?', answer: 'Si. Esta demo comunica atencion con agenda para ordenar tiempos y evitar esperas innecesarias.' },
+      { question: '¿Puedo cambiar mi hora?', answer: 'Si, idealmente avisando con anticipacion por WhatsApp para reagendar segun disponibilidad.' },
+      { question: '¿Que medios de pago aceptan?', answer: 'La landing puede indicar efectivo, transferencia, debito y credito segun el negocio real.' },
+      { question: '¿Cuanto dura una sesion?', answer: 'Depende del servicio. En el catalogo cada tratamiento muestra una duracion referencial.' },
+      { question: '¿Tienen servicios para eventos?', answer: 'Si. Los packs pueden adaptarse para novias, graduaciones, reuniones o producciones especiales.' },
     ]}
   />
 
   <section class="contact-section">
-    <ContactForm title="Agenda tu próxima hora" submitLabel="Solicitar hora" />
+    <div class="closing-cta">
+      <div>
+        <div class="section-kicker">Reserva ahora</div>
+        <h2>Agenda tu momento Glow</h2>
+        <p>
+          Una landing premium para negocios de belleza que necesitan mostrar servicios,
+          generar confianza y convertir visitas en horas reservadas.
+        </p>
+      </div>
+      <a class="button" href={whatsappHref} target="_blank" rel="noreferrer">Reservar hora</a>
+    </div>
+    <ContactForm
+      variant="panel"
+      title="Solicita tu hora"
+      description="Formulario visual de demo. Para reservar de verdad, el CTA principal deriva a WhatsApp."
+      submitLabel="Solicitar hora"
+    />
   </section>
 </DemoLayout>
