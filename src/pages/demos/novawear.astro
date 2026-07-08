@@ -1,10 +1,15 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import FAQ from '@components/FAQ.astro';
 import DemoLayout from '@layouts/DemoLayout.astro';
 import { getDemoBySlug } from '@data/demos';
 import '@styles/themes/novawear.css';
 
 const demo = getDemoBySlug('novawear')!;
+const assetDir = join(process.cwd(), 'public', 'assets', 'demos', 'novawear');
+const hasAsset = (fileName: string) => existsSync(join(assetDir, fileName));
+
 const whatsappBase = 'https://wa.me/56912345678';
 const stockMessage = encodeURIComponent('Hola NovaWear, quiero consultar stock de la coleccion.');
 const stockHref = `${whatsappBase}?text=${stockMessage}`;
@@ -90,7 +95,7 @@ const steps = [
       style={`--asset: url('/assets/demos/novawear/hero-editorial-streetwear.webp')`}
       aria-label="Campaña editorial urbana de NovaWear"
     >
-      <span class="nw-image__label">Reemplazar: hero-editorial-streetwear.webp</span>
+      {!hasAsset('hero-editorial-streetwear.webp') && <span class="nw-image__label">Reemplazar: hero-editorial-streetwear.webp</span>}
       <div class="nw-hero__drop">
         <strong>DROP 01</strong>
         <span>12 piezas · stock limitado</span>
@@ -118,7 +123,7 @@ const steps = [
               class="nw-category-card__media nw-image"
               style={`--asset: url('/assets/demos/novawear/${category.asset}')`}
             >
-              <span class="nw-image__label">Reemplazar: {category.asset}</span>
+              {!hasAsset(category.asset) && <span class="nw-image__label">Reemplazar: {category.asset}</span>}
             </div>
             <div>
               <span>{category.label}</span>
@@ -148,7 +153,7 @@ const steps = [
               class="nw-product-card__media nw-image"
               style={`--asset: url('/assets/demos/novawear/${product.asset}')`}
             >
-              <span class="nw-image__label">Reemplazar: {product.asset}</span>
+              {!hasAsset(product.asset) && <span class="nw-image__label">Reemplazar: {product.asset}</span>}
             </div>
             <div class="nw-product-card__body">
               <span>{product.tag}</span>
@@ -195,7 +200,7 @@ const steps = [
               class="nw-lookbook-card__media nw-image"
               style={`--asset: url('/assets/demos/novawear/${item.asset}')`}
             >
-              <span class="nw-image__label">Reemplazar: {item.asset}</span>
+              {!hasAsset(item.asset) && <span class="nw-image__label">Reemplazar: {item.asset}</span>}
             </div>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
