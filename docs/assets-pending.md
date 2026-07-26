@@ -1,6 +1,12 @@
-# Assets pendientes para Demo Landing Pack BaseLogic
+# Catálogo de assets y pendientes de publicación — Demo Landing Pack BaseLogic
 
-Este documento consolida las imágenes que deben cargarse antes de una publicación real. Todas deben ir en formato `.webp`, optimizadas para web, dentro de `public/assets/demos/<demo>/`. Mientras falten, las landings usan placeholders o fondos de respaldo para evitar imágenes rotas.
+## Estado actualizado
+
+Actualización: 2026-07-26
+
+El pendiente histórico de generación y carga quedó resuelto: todas las imágenes de prioridad Alta, Media y Baja están generadas, optimizadas en formato `.webp` y presentes en `public/assets/demos/<demo>/`. El inventario contiene 43 assets (18 Alta, 20 Media y 5 Baja). Este documento conserva los nombres, usos, prioridades y briefs originales para trazabilidad y futuras sustituciones.
+
+Antes de una publicación real todavía corresponde revisar y aprobar visualmente los assets, confirmar su procedencia/permisos de uso y reemplazar cualquier contenido ficticio de las landings.
 
 ## Brasa Norte
 

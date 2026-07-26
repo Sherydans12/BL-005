@@ -1,6 +1,6 @@
 # Assets Brasa Norte
 
-Colocar aqui las imagenes reales o generadas para la landing demo.
+Las imágenes reales/generadas de esta demo ya están presentes en esta carpeta y se usan en la landing demo.
 
 Nombres esperados por `src/pages/demos/brasa-norte.astro`:
 
@@ -11,4 +11,4 @@ Nombres esperados por `src/pages/demos/brasa-norte.astro`:
 - `ambiente-local.webp`: interior del local, mesas, barra o ambiente acogedor.
 - `menu-ejecutivo.webp`: plato de almuerzo o menu del dia.
 
-Recomendacion: exportar en WebP, entre 1200px y 1800px por el lado largo. La pagina tiene fallback visual si falta algun archivo, pero al agregar estas imagenes se reemplaza automaticamente.
+Recomendación histórica: exportar en WebP, entre 1200px y 1800px por el lado largo. La página conserva fallback visual para futuras sustituciones; los archivos inventariados ya están integrados.

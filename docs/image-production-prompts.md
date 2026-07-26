@@ -1,6 +1,8 @@
 # Guía de producción de imágenes finales
 
-Guía para producir las imágenes finales del Demo Landing Pack BaseLogic. No reemplazar archivos todavía: primero generar, revisar, optimizar y aprobar visualmente cada asset.
+Guía de producción y referencia para las imágenes finales del Demo Landing Pack BaseLogic. El orden de producción ya fue ejecutado: todas las imágenes Alta, Media y Baja están generadas, optimizadas en `.webp` e integradas en `public/assets/demos/`. Se conserva la guía original para trazabilidad, revisión visual y futuras sustituciones.
+
+Antes de publicar, todavía corresponde aprobar visualmente los assets y confirmar su procedencia y permisos de uso cuando corresponda.
 
 ## Criterios generales
 
@@ -121,7 +123,9 @@ Prompt negativo general: evitar patentes visibles, logos de marcas de autos, tal
 
 Nota de consistencia: las imágenes deben vender método y transparencia. Mejor taller limpio y técnico que escena dramática.
 
-## Orden recomendado de producción
+## Orden histórico recomendado de producción
+
+Este orden se conserva como registro del proceso realizado; no quedan imágenes pendientes de generación.
 
 1. Brasa Norte: `hero-plato-principal.webp`, `parrilla-brasa.webp`, `menu-ejecutivo.webp`, `ambiente-local.webp`.
 2. Glow Studio: `hero-estudio-belleza.webp`, `servicio-facial.webp`, `ambiente-premium.webp`.
@@ -131,7 +135,7 @@ Nota de consistencia: las imágenes deben vender método y transparencia. Mejor 
 6. Producir prioridades Media: Brasa Norte `cafe-especialidad.webp`, `postre-casero.webp`; Glow Studio `servicio-cejas.webp`, `servicio-unas.webp`, `servicio-barberia.webp`, `antes-despues.webp`, `equipo-profesional.webp`; KineActiva `rehabilitacion-deportiva.webp`, `dolor-lumbar.webp`, `terapia-adulto-mayor.webp`, `sala-rehabilitacion.webp`; NovaWear `detalle-accesorios.webp`, `producto-chaqueta.webp`, `producto-polera.webp`, `producto-cargo.webp`, `producto-hoodie.webp`; AutoPrime `mantencion-frenos.webp`, `detailing-auto.webp`, `antes-despues-detailing.webp`, `mecanico-trabajando.webp`.
 7. Producir prioridades Baja: Glow Studio `servicio-masaje.webp`, `servicio-peinado.webp`; NovaWear `producto-bolso.webp`, `producto-jockey.webp`, `producto-overshirt.webp`.
 
-## Checklist antes de insertar imágenes
+## Checklist de revisión y futuras sustituciones
 
 - Verificar nombre exacto del archivo y carpeta exacta de destino.
 - Exportar en `.webp`.

@@ -1,6 +1,6 @@
 # Assets sugeridos para KineActiva
 
-Esta carpeta queda preparada para reemplazar los placeholders visuales de la demo KineActiva.
+Esta carpeta contiene los assets WebP generados e integrados de la demo KineActiva. La lógica de fallback para reemplazos futuros se conserva en la landing.
 
 Usar imagenes reales, luminosas y profesionales de una consulta de kinesiologia. Evitar fotos genericas de spa, estetica, hospitalizacion o promesas medicas exageradas.
 

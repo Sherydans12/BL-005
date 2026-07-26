@@ -45,7 +45,7 @@ Usar este checklist antes de cerrar el desarrollo de una demo.
 ## Performance
 
 - [ ] No se agregaron dependencias innecesarias.
-- [ ] Imágenes futuras deben estar optimizadas.
+- [x] Las imágenes actuales están generadas e integradas en `.webp`; cualquier asset futuro debe optimizarse antes de incorporarlo.
 - [ ] No hay JavaScript innecesario para contenido estático.
 - [ ] `npm run build` pasa.
 

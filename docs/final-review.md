@@ -1,12 +1,17 @@
 # Revisión final Demo Landing Pack BaseLogic
 
-Fecha de revisión: 2026-07-07
+Fecha de revisión original: 2026-07-07
+Actualización de cierre: 2026-07-26
 
 ## Resumen general
 
 El paquete contiene cinco landings demo para comercios, publicadas bajo `/demos/*`, más una vitrina comercial en `/demos`. El sistema se mantiene en Astro, sin backend, sin dependencias nuevas y sin APIs externas. Las demos conservan identidades distintas por rubro y usan CTAs de WhatsApp con el número placeholder `+56912345678`.
 
 Capturas de evidencia guardadas en `docs/final-review-screenshots/`.
+
+## Estado actualizado de imágenes
+
+El pendiente histórico de generación y carga de imágenes quedó resuelto. Todas las imágenes de prioridad Alta, Media y Baja están generadas, optimizadas en `.webp` e integradas en `public/assets/demos/`: 43 assets en total (18 Alta, 20 Media y 5 Baja). La documentación de prompts y el inventario original se conservan como referencia.
 
 ## Resumen de demos
 
@@ -30,7 +35,7 @@ Capturas de evidencia guardadas en `docs/final-review-screenshots/`.
 - [x] Cada landing tiene `title`, `description` y H1 claro.
 - [x] Estructura semántica razonable con `header`, `main`, `section`, `article`, `form`, `dl`, `FAQ` y labels/aria donde corresponde.
 - [x] Imágenes con `<img>` tienen `alt`, `width`, `height` y `loading="lazy"` o `fetchpriority="high"` según uso.
-- [x] Cuando faltan assets `.webp`, se muestran placeholders visuales o fondos de respaldo, sin iconos rotos visibles.
+- [x] Con todos los assets `.webp` presentes, no se observan placeholders grises ni iconos rotos visibles; el fallback queda disponible para futuras sustituciones.
 - [x] Existen carpetas `public/assets/demos/<demo>/` y README por demo.
 - [x] Se revisó responsive en móvil, tablet y desktop.
 - [x] Se corrigieron problemas obvios de overflow/corte de titulares en KineActiva, NovaWear y AutoPrime.
@@ -47,12 +52,11 @@ Capturas de evidencia guardadas en `docs/final-review-screenshots/`.
 
 ## Pendientes antes de publicar
 
-- Reemplazar placeholders por imágenes reales o generadas en formato `.webp`, siguiendo `docs/assets-pending.md`.
-- Revisar visualmente las fotos finales con el dueño del proyecto antes de publicar.
+- El pendiente histórico de generar imágenes quedó resuelto. Falta revisar y aprobar visualmente los assets con el dueño del proyecto, además de confirmar su procedencia y permisos de uso cuando corresponda.
 - Reemplazar el número placeholder `+56912345678` por el WhatsApp real cuando se apruebe la demo.
 - Definir dominios/canonicals finales si el pack se publica fuera del entorno demo.
 - Hacer una pasada de SEO final con marca real, ubicación real y datos reales por negocio cuando corresponda.
 
 ## Recomendación de próximos pasos
 
-El paquete está listo para revisión visual final del dueño. La base técnica, rutas, copy comercial, CTAs, SEO básico, diferenciación visual y responsive quedan en buen estado para una demo comercial. El principal pendiente real es cargar y aprobar imágenes finales por rubro.
+El paquete está listo para revisión de aprobación del dueño. La base técnica, rutas, copy comercial, CTAs, SEO básico, diferenciación visual, assets y responsive quedan en buen estado para una demo comercial. Los pendientes reales son reemplazar datos ficticios, aprobar el contenido final, configurar el canal de contacto real y definir la publicación.

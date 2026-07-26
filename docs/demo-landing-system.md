@@ -2,6 +2,10 @@
 
 Este proyecto contiene un paquete de landings demo para mostrar cómo BaseLogic puede crear páginas comerciales para distintos tipos de comercios sin repetir una misma plantilla visual.
 
+## Estado de cierre
+
+Las cinco landings están implementadas y cuentan con 43 imágenes WebP generadas e integradas: 18 de prioridad Alta, 20 de prioridad Media y 5 de prioridad Baja. No quedan imágenes pendientes de generación. El número de WhatsApp continúa siendo el placeholder `+56912345678` y no se ha realizado deploy.
+
 ## Stack
 
 - Astro

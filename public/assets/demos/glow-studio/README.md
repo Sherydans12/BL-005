@@ -1,7 +1,7 @@
 # Assets sugeridos para Glow Studio
 
 Esta carpeta contiene las referencias visuales locales de la landing demo `Glow Studio`.
-Cuando no existan los archivos reales, la pagina muestra placeholders elegantes con el nombre del asset a reemplazar.
+Todos los archivos inventariados están presentes y se usan en la landing. La página conserva placeholders elegantes como fallback para futuras sustituciones.
 
 ## Imagenes principales
 

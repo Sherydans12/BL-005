@@ -1,6 +1,6 @@
 # Assets sugeridos para AutoPrime
 
-Colocar aqui imagenes reales o generadas en formato `.webp`, optimizadas para web. La landing comprueba si existen antes de renderizar `<img>`, asi que mientras falten se muestra un placeholder tecnico sin iconos rotos.
+Las imágenes reales/generadas de esta demo ya están presentes en formato `.webp` y optimizadas para web. La landing conserva la comprobación de existencia y el placeholder técnico como fallback para futuras sustituciones, sin iconos rotos.
 
 ## Imagenes recomendadas
 

@@ -2,6 +2,8 @@
 
 Este documento sirve como brief para desarrollar cada landing en chats separados. La meta es que cada demo parezca hecha para un rubro específico, no una plantilla con cambio de color.
 
+Estado de cierre: las cinco direcciones creativas fueron implementadas y cuentan con imágenes Alta, Media y Baja generadas e integradas. Este brief se conserva para futuras iteraciones sin alterar la diferenciación lograda.
+
 ## Brasa Norte
 
 **Concepto:** restaurante/cafetería de barrio con cocina artesanal, café de especialidad y preparaciones de temporada.

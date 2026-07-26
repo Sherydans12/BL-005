@@ -1,7 +1,7 @@
 # Assets sugeridos para NovaWear
 
 Esta carpeta contiene las referencias visuales locales de la landing demo `NovaWear`.
-Cuando no existan los archivos reales, la pagina muestra placeholders editoriales con el nombre del asset a reemplazar.
+Todos los archivos inventariados están presentes y se usan en la landing. La página conserva placeholders editoriales como fallback para futuras sustituciones.
 
 ## Imagenes principales
 
