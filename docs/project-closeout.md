@@ -18,7 +18,17 @@ Este cierre no incluye rediseño, cambio de contenido comercial real, conexión 
 | NovaWear | `/demos/novawear` | Catálogo urbano, productos, drops y stock. |
 | AutoPrime | `/demos/autoprime` | Diagnóstico, mantención, detailing y cotización. |
 
-La vitrina común está disponible en `/demos` y `/` redirige a esa ruta.
+La vitrina común está disponible en `/demos` y `/` redirige de forma compatible con
+salida estática a esa ruta. Las rutas oficiales de publicación son:
+
+- `https://demo.baselogic.cl/demos`
+- `https://demo.baselogic.cl/demos/brasa-norte`
+- `https://demo.baselogic.cl/demos/glow-studio`
+- `https://demo.baselogic.cl/demos/kineactiva`
+- `https://demo.baselogic.cl/demos/novawear`
+- `https://demo.baselogic.cl/demos/autoprime`
+
+El sitio principal `baselogic.cl` enlazará directamente a las demos desde esas rutas.
 
 ## Estado visual
 
@@ -30,6 +40,7 @@ La vitrina común está disponible en `/demos` y `/` redirige a esa ruta.
 ## Estado técnico
 
 - Astro y TypeScript funcionando con componentes compartidos y themes por demo.
+- Astro configurado para salida estática en `dist/`, con dominio objetivo `demo.baselogic.cl`.
 - Sin backend y sin dependencias de UI externas.
 - Formularios presentes como experiencia visual; todavía no envían datos.
 - WhatsApp configurado con el placeholder `+56912345678`.
@@ -52,7 +63,7 @@ La guía de prompts y el inventario original se conservan como documentación de
 | --- | --- |
 | `npm run build` | OK |
 | `npm audit --omit=dev` | 0 vulnerabilities |
-| `git status --short --untracked-files=all` | Limpio después del commit de cierre |
+| `git status --short --untracked-files=all` | Limpio después del commit de preparación de despliegue |
 
 No se ejecutó `npm audit fix`.
 
@@ -75,4 +86,4 @@ No se ejecutó `npm audit fix`.
 
 ## Recomendación de próximo paso
 
-Hacer una revisión de aprobación con el dueño del proyecto, reemplazar los datos ficticios y el WhatsApp, y luego publicar como sitio estático en un hosting compatible con Astro mediante el build existente. El deploy debe quedar para después de esa aprobación.
+Hacer una revisión de aprobación con el dueño del proyecto, reemplazar los datos ficticios y el WhatsApp, y luego publicar como sitio estático en Coolify mediante el build existente. La configuración operativa está documentada en [docs/deployment-coolify.md](deployment-coolify.md).

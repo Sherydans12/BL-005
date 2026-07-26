@@ -11,11 +11,15 @@ Paquete de cinco landings demo para mostrar cómo BaseLogic adapta una página c
 - Sin backend ni dependencias de UI externas.
 - Formularios visuales, sin envío real.
 
-## Rutas disponibles
+## Rutas oficiales
+
+El sitio se desplegará como sitio estático en `demo.baselogic.cl`. El sitio principal
+`baselogic.cl` enlazará directamente a estas rutas descriptivas, que son las rutas
+oficiales de cada demo.
 
 | Ruta | Uso |
 | --- | --- |
-| `/` | Redirige a la vitrina `/demos`. |
+| `/` | Redirige de forma compatible con salida estática a la vitrina `/demos`. |
 | `/demos` | Índice comercial del paquete. |
 | `/demos/brasa-norte` | Demo de restaurante y cafetería. |
 | `/demos/glow-studio` | Demo de estética y barbería. |
@@ -70,13 +74,24 @@ Las llamadas a WhatsApp usan intencionalmente el placeholder `+56912345678`. Deb
 - Conectar formularios, analítica u otras integraciones si el proyecto final las requiere.
 - Completar la revisión legal y comercial correspondiente al negocio.
 
-## Recomendación de deploy
+## Despliegue estático
 
-Cuando se completen esos pendientes, se recomienda un hosting estático conectado al repositorio, compatible con Astro, ejecutando `npm run build` y publicando `dist/` (por ejemplo, Vercel, Netlify o Cloudflare Pages). No se ha realizado deploy en este cierre.
+La configuración de Astro declara salida estática (`output: 'static'`) y el build genera
+`dist/`. La configuración objetivo para Coolify es:
+
+- Dominio: `demo.baselogic.cl`.
+- Repositorio: `Sherydans12/BL-005`.
+- Branch: `main`.
+- Build command: `npm run build`.
+- Publish directory: `dist`.
+
+La guía completa de DNS, SSL y publicación está en
+[docs/deployment-coolify.md](docs/deployment-coolify.md). No se ha realizado deploy en este cierre.
 
 ## Documentación
 
 - [Cierre de proyecto](docs/project-closeout.md)
+- [Despliegue en Coolify](docs/deployment-coolify.md)
 - [Revisión final](docs/final-review.md)
 - [Catálogo de assets](docs/assets-pending.md)
 - [Sistema de landings](docs/demo-landing-system.md)

@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://baselogic.cl',
+  site: 'https://demo.baselogic.cl',
+  output: 'static',
 });
