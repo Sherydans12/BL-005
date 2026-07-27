@@ -2,15 +2,34 @@
 
 ## Configuración objetivo
 
-- **Dominio:** `demo.baselogic.cl`
+- **Build Pack:** `Dockerfile`
+- **Dockerfile path:** `./Dockerfile`
+- **Port:** `80`
+- **Domain:** `https://demo.baselogic.cl`
 - **Stack:** Astro static site
 - **Repositorio:** `Sherydans12/BL-005`
 - **Branch sugerida:** `main`
-- **Build command:** `npm run build`
-- **Publish directory:** `dist`
 
 Astro está configurado con `output: 'static'`. El build genera archivos HTML y assets
-listos para ser servidos por Coolify sin backend ni adaptador de servidor.
+que la imagen final sirve con Nginx, sin backend ni adaptador de servidor.
+
+Para este proyecto se recomienda usar el `Dockerfile` propio y no Nixpacks. El deploy
+con Nixpacks continuó usando Node v22.11.0 incluso después de configurar
+`NIXPACKS_NODE_VERSION=22.13.1`, mientras que Astro requiere Node >=22.12.0. El stage
+de build del `Dockerfile` fija explícitamente `node:22.13.1-alpine`.
+
+## Configuración en Coolify
+
+1. Seleccionar **Dockerfile** como Build Pack.
+2. Configurar **Dockerfile path** como `./Dockerfile`.
+3. Configurar el puerto de la aplicación como `80`.
+4. Configurar el dominio `https://demo.baselogic.cl`.
+5. No configurar comandos de build o directorios de publicación adicionales: el
+   `Dockerfile` ejecuta `npm ci`, genera `dist/` y lo copia a Nginx.
+6. No usar Nixpacks para este deploy.
+
+Nginx sirve los archivos estáticos desde `/usr/share/nginx/html` y resuelve rutas
+generadas por Astro como `/demos/brasa-norte` hacia su correspondiente `index.html`.
 
 ## Rutas finales oficiales
 

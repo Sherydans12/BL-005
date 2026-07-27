@@ -77,13 +77,19 @@ Las llamadas a WhatsApp usan intencionalmente el placeholder `+56912345678`. Deb
 ## Despliegue estático
 
 La configuración de Astro declara salida estática (`output: 'static'`) y el build genera
-`dist/`. La configuración objetivo para Coolify es:
+`dist/`. Para Coolify se usa el `Dockerfile` del repositorio, que fija Node 22.13.1
+durante el build y sirve el resultado con Nginx. La configuración recomendada es:
 
-- Dominio: `demo.baselogic.cl`.
+- Build Pack: `Dockerfile`.
+- Dockerfile path: `./Dockerfile`.
+- Port: `80`.
+- Domain: `https://demo.baselogic.cl`.
 - Repositorio: `Sherydans12/BL-005`.
 - Branch: `main`.
-- Build command: `npm run build`.
-- Publish directory: `dist`.
+
+No usar Nixpacks para este deploy: en la prueba previa mantuvo Node v22.11.0 aunque
+se configuró `NIXPACKS_NODE_VERSION=22.13.1`, una versión inferior a la requerida por
+Astro.
 
 La guía completa de DNS, SSL y publicación está en
 [docs/deployment-coolify.md](docs/deployment-coolify.md). No se ha realizado deploy en este cierre.
